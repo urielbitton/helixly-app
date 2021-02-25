@@ -1,0 +1,62 @@
+.bottomnav {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 600px;
+  height: 65px;
+  border-radius: 40px;
+  background: var(--pale);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.bottomnav .navicon {
+  height: 40px;
+  width: 40px;
+  border-radius: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  transform: scale(0.98)
+}
+.bottomnav .navicon:active {
+  transform: scale(1.05)
+}
+.bottomnav .navicon i {
+  color: #bbb;
+  font-size: 23px;
+  transition: all 0.3s;
+}
+.bottomnav .navicon:hover:not(.addericon), .bottomnav .activenavlink .navicon {
+  background: var(--hover);
+}
+.bottomnav .activenavlink .navicon {
+  transform: scale(1.05)
+}
+.bottomnav .navicon:hover i:not(.addericon i), .bottomnav .activenavlink i {
+  color: var(--color);
+}
+.bottomnav .addericon {
+  top: -30px;
+  background: var(--grad);
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  box-shadow: 0px 12px 33px -5px rgba(254,172,140,1)
+}
+.bottomnav .addericon:active {
+  width: 63px;
+}
+.bottomnav .addericon:hover {
+  filter: brightness(110%)
+}
+.bottomnav .addericon i {
+  color: #fff;
+}
+
+
