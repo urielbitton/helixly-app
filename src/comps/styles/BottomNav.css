@@ -12,6 +12,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  z-index: 999;
+  box-shadow: 0 5px 13px rgba(0,0,0,0.1)
 }
 .bottomnav .navicon {
   height: 40px;

@@ -1,3 +1,18 @@
 .homecont {
   padding: 30px;
+  width: 100%;
+}
+
+@media (max-width:1320px) {
+  .grid {
+    width: 100%;
+  }
+}
+@media (max-width:1080px) {
+  .homepage {
+    grid-template-columns: auto;
+  }
+  .homesidebar {
+    display: none;
+  }
 }

@@ -1,0 +1,60 @@
+.homesidebar {
+  padding: 20px;
+  border-radius: 10px;
+  width: 280px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+.greetdiv {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+.greetdiv h4 {
+  color: #555;
+  font-size: 18px;
+}
+.homesidebar .filters {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.homesidebar .filters h5 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  grid-gap: 20px;
+  font-size: 15px;
+  padding: 10px;
+  color: #555;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+.homesidebar .filters h5:hover {
+  background: rgba(234,238,241,0.3)
+}
+.homesidebar .filters h5 div {
+  width: 35px;
+  height: 35px;
+  background: var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.homesidebar .filters h5 i {
+  color: #777;
+  transition: all 0.3s;
+}
+.homesidebar .filters .activefilter {
+  color: var(--color)
+}
+.homesidebar .filters .activefilter div {
+  background: var(--color);
+}
+.homesidebar .filters .activefilter i {
+  color: #fff;
+}
+

@@ -1,0 +1,96 @@
+.postitemcont {
+  width: 100%;
+  height: 240px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+} 
+.postitemcont .covercont {
+  width: 40%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.postitemcont .covercont img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.postitemcont .infocont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 20px;
+  padding-left: 40px;
+  height: 100%;
+  width: 60%;
+}
+.postitemcont .infocont h3 {
+  color: #333;
+  font-size: 22px;
+  cursor: pointer;
+}
+.postitemcont .infocont p {
+  color: #aaa;
+  font-size: 13.5px;
+  margin-top: 10px;
+}
+.postitemcont .infocont .headercont {
+  display: flex;
+  flex-direction: column;
+}
+.postitemcont .elementscont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  width: 100%;
+}
+.postitemcont .authorcont, .postitemcont .actionscont {
+  display: flex;
+  align-items: center;
+}
+.postitemcont .authorcont img {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  margin-right: 15px;
+}
+.postitemcont .authorcont h6 {
+  font-size: 14.5px;
+  color: #444;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #333;
+}
+.postitemcont .authorcont h6 small {
+  font-size: 11px;
+  margin-top: 3px;
+  color: #aaa
+}
+.postitemcont .actionscont div {
+  padding: 7px 12px;
+  border-radius: 6px;
+  background: var(--pale);
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.postitemcont .actionscont h6 {
+  margin-left: 8px;
+  color: #333;
+}
+.postitemcont .actionscont i {
+  font-size: 14px;
+}
+.postitemcont .actionscont div:hover {
+  filter: brightness(98%);
+}
+

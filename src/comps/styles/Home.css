@@ -1,0 +1,7 @@
+.homepage {
+  display: grid;
+  grid-template-columns: 280px auto;
+  grid-gap: 20px;
+  width: 100%; 
+  padding-bottom: 120px;
+}

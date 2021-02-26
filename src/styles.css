@@ -8,12 +8,14 @@ html, body {
 :root { 
   --color: #8214ff;   
   --hover: rgba(130, 20, 255,0.07); 
-  --pale: rgba(212, 223, 231, 0.3);
+  --pale: #f2f5f8;
+  --gray: #eaeef1;
   --grad: linear-gradient(90deg, rgba(249,119,143,1) 0%, rgb(254, 172, 140) 100%);
+  --shadow: 0 0 6px rgba(0,0,0,0.1);
 }  
 
 .grid {
-  width: 1200px;
+  width: 1250px;
   margin: auto;
 }
 .spacer {
