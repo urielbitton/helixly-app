@@ -74,23 +74,5 @@
   margin-top: 3px;
   color: #aaa
 }
-.postitemcont .actionscont div {
-  padding: 7px 12px;
-  border-radius: 6px;
-  background: var(--pale);
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.postitemcont .actionscont h6 {
-  margin-left: 8px;
-  color: #333;
-}
-.postitemcont .actionscont i {
-  font-size: 14px;
-}
-.postitemcont .actionscont div:hover {
-  filter: brightness(98%);
-}
+
 

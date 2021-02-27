@@ -1,0 +1,8 @@
+.postpage {
+  display: grid;
+  grid-template-columns: 150px auto;
+  grid-gap: 20px;
+}
+
+
+

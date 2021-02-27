@@ -15,6 +15,9 @@ nav .navgroup {
   justify-content: flex-start;
   align-items: center;
 }
+nav .logo {
+  cursor: pointer;
+}
 nav .navgroup h4 {
   font-weight: 900;
   color: #444;

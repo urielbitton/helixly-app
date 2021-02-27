@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import AppButton from './AppButton'
 import { StoreContext } from './StoreContext'
 import './styles/HomeSidebar.css'
 
@@ -27,7 +28,11 @@ export default function HomeSidebar() {
   return (
     <div className="homesidebar"> 
       <div className="greetdiv">
-        <h4>Good {dayTime} Uriel</h4>
+        <h4>Good {dayTime} Emily</h4>
+        <div>
+          <img src="https://i.imgur.com/L76EEqM.jpg" alt="" />
+          <AppButton icon="fas fa-user" iconcolor="#555" color="#555" title="My Account" size={13}/>
+        </div>
       </div>
       <div className="filters">
         {filtersrow}

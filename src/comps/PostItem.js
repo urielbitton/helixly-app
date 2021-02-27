@@ -1,10 +1,12 @@
 import React from 'react'
-import { StoreContext } from './StoreContext'
+import { BrowserRouter as Router,Switch,Route,Link, useHistory } from "react-router-dom"
+import AppButton from './AppButton'
 import './styles/PostItem.css'
 
 export default function PostItem(props) {
 
-  const {title, cover, descript, tags, category, author, profpic, datecreated} = props.el
+  const {id, title, cover, descript, tags, category, author, profpic, datecreated} = props.el
+  const history = useHistory()
 
   function shortenMsgs(text,num) {
     if(text.length > num) {
@@ -19,11 +21,11 @@ export default function PostItem(props) {
   return (
     <div className="postitemcont">
       <div className="covercont">
-        <img src={cover} alt=""/>
+        <img src={cover} alt="" onClick={() => history.push(`/posts/${id}`)}/>
       </div>
       <div className="infocont">
         <div className="headercont">
-          <h3>{shortenMsgs(title,82)}</h3>
+          <h3 onClick={() => history.push(`/posts/${id}`)}>{shortenMsgs(title,82)}</h3>
           <p>{shortenMsgs(descript,140)}</p>
         </div>
         <div className="elementscont">
@@ -32,8 +34,8 @@ export default function PostItem(props) {
             <h6>{author}<small>{datecreated}</small></h6>
           </div>
           <div className="actionscont">
-            <div><i class="fal fa-comment"></i><h6>2 Comments</h6></div>
-            <div><i class="fal fa-bookmark"></i><h6>Save</h6></div>
+            <AppButton title="2 Comments" icon="fal fa-comment" />
+            <AppButton title="Save" icon="fal fa-bookmark" />
           </div>
         </div>
       </div>

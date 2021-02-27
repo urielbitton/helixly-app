@@ -1,0 +1,26 @@
+.appbutton {
+  padding: 7px 12px;
+  border-radius: 6px;
+  background: var(--pale);
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+.appbutton:active {
+  transform: scale(0.97);
+}
+.appbutton h6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.appbutton i {
+  font-size: 14px;
+  margin-right: 8px;
+}
+.appbutton:hover {
+  filter: brightness(97%); 
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
 import Home from './Home'
 import NewPost from './NewPost'
@@ -6,8 +6,19 @@ import ReadingList from './ReadingList'
 import Account from './Account'
 import Settings from './Settings'
 import './styles/Homecont.css'
+import { StoreContext } from './StoreContext'
+import PostPage from './PostPage'
 
 export default function Homecont() {
+
+  const {posts} = useContext(StoreContext)
+
+  const postpage = posts && posts.map(el => {
+    return <Route path={`/posts/${el.id}`}>
+      <PostPage el={el} />
+    </Route>
+  })
+
   return (
     <div className="homecont"> 
       <div className="grid">
@@ -27,6 +38,7 @@ export default function Homecont() {
           <Route path="/settings">
             <Settings />
           </Route>
+          {postpage}
         </Switch>
       </div>
     </div> 
