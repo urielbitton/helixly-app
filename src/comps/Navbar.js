@@ -12,7 +12,7 @@ export default function Navbar() {
       <div className="grid">
       <div className="navgroup">
         <h4 className="logo" onClick={() => history.push('/')}><img src="https://i.imgur.com/ZcJS2PV.png" alt=""/>Helixly</h4>
-        <AppInput iconclass="fal fa-search"/>
+        <AppInput iconclass="fal fa-search" placeholder="Search..."/>
       </div>
       <div className="navgroup">
         <div className="toolbar">

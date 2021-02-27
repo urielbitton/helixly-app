@@ -31,7 +31,7 @@ export default function PostItem(props) {
         <div className="elementscont">
           <div className="authorcont">
             <img src={profpic} alt=""/>
-            <h6>{author}<small>{datecreated}</small></h6>
+            <h6><span>{author}</span><small>{datecreated}</small></h6>
           </div>
           <div className="actionscont">
             <AppButton title="2 Comments" icon="fal fa-comment" />

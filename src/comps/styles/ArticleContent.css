@@ -1,3 +1,59 @@
-.articlecontent {
-  
-} 
+.articlecontent .headercont {
+  width: 100%;
+}
+.articlecontent .headercont > img {
+  width: 100%;
+  height: 360px;
+  border-radius: 15px 15px 0 0
+}
+.articlecontent .headercont h1 {
+  color: #333;
+  font-size: 42px;
+  margin-top: 15px;
+}
+.articlecontent .metadatacont {
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.articlecontent .metadatacont img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+.articlecontent .metadatacont h6 {
+  font-size: 15px;
+  color: #555;
+  padding: 5px;
+}
+.articlecontent .metadatacont h6::after {
+  position: relative;
+  top: -2px;
+  content: '•';
+  font-size: 9px;
+  margin: 0 10px;
+  margin-left: 15px;
+  color: #ccc;
+}
+.articlecontent .metadatacont h6:last-child::after {
+  content: '';
+}
+.articlecontent .metadatacont h6 span {
+  color: #aaa;
+  font-size: 13px;
+}
+.articlecontent .metadatacont h6 i {
+  margin-left: 8px;
+  color: #555;
+}
+.articlecontent .textcontent {
+  margin: 45px 0;
+  line-height: 1.9;
+  font-size: 17px;
+  color: #333;
+}
+

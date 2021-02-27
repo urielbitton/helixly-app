@@ -63,16 +63,21 @@
 }
 .postitemcont .authorcont h6 {
   font-size: 14.5px;
-  color: #444;
   display: flex;
   justify-content: center;
   flex-direction: column;
   color: #333;
+}
+.postitemcont .authorcont h6 span:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .postitemcont .authorcont h6 small {
   font-size: 11px;
   margin-top: 3px;
   color: #aaa
 }
-
+.postitemcont .appbutton {
+  margin-left: 10px;
+}
 

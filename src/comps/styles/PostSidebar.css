@@ -1,0 +1,115 @@
+.postsidebar > div {
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.postsidebar .breadcrumbscont {
+  width: 100%;
+  background: var(--pale);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.postsidebar .breadcrumbscont h5 {
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 10px;
+}
+.postsidebar .breadcrumbscont h5:hover {
+  color: var(--color);
+}
+.postsidebar .breadcrumbscont h5 i {
+  font-size: 27px;
+  margin-right: 5px;
+}
+.postsidebar .sharescont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-gap: 20px;
+}
+.postsidebar .sharescont i {
+  font-size: 23px;
+  color: #777;
+}
+.postsidebar .sharescont > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-gap: 4px;
+  cursor: pointer;
+}
+.postsidebar .sharescont > div h6 {
+  color: #555;
+}
+.postsidebar .sharescont .iconcont {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.postsidebar .sharescont .iconcont:active {
+  transform: scale(0.85);
+}
+.postsidebar .sharescont > div:hover .iconcont {
+  background: var(--pale);
+}
+.postauthorcont {
+  background: var(--pale);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.postauthorcont h5 {
+  color: #444;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background: var(--grad);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+.postauthorcont h6.authorcont {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 16px;
+}
+.postauthorcont h6 img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.postauthorcont p {
+  font-size: 15px;
+  margin: 10px auto;
+  width: 95%;
+  line-height: 1.5;
+}
+.postauthorcont .authorbtns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+
+
+
+
+
+

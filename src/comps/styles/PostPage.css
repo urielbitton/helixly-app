@@ -1,7 +1,8 @@
 .postpage {
   display: grid;
-  grid-template-columns: 150px auto;
-  grid-gap: 20px;
+  grid-template-columns: 250px auto;
+  grid-gap: 40px;
+  padding-bottom: 100px;
 }
 
 
