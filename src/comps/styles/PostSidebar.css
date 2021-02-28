@@ -84,7 +84,7 @@
 .postauthorcont h6.authorcont {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin-bottom: 10px;
   font-size: 16px;
 }
 .postauthorcont h6 img {
@@ -106,9 +106,26 @@
   align-items: center;
   margin: 10px 0;
 }
-
-
-
+.postauthorcont hr {
+  height: 1px;
+  background: #e5e5e5;
+  width: 100%;
+  margin: 15px auto;
+}
+.postauthorcont .weblink {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+.postauthorcont .weblink:hover a {
+  text-decoration: underline;
+}
+.postauthorcont .weblink i {
+  margin-right: 10px;
+}
 
 
 

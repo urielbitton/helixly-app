@@ -3,10 +3,10 @@ import './styles/AppInputs.css'
 
 export function AppInput(props) {
 
-  const {title,iconclass,inpRef,onFocus,placeholder,type,value,onChange,name,checked,disabled,onKeyUp} = props
+  const {title,iconclass,inpRef,onFocus,placeholder,type,value,onChange,name,checked,disabled,onKeyUp,className} = props
  
   return ( 
-    <label className="appinput">
+    <label className={`appinput ${className}`}> 
       <h6>{title}</h6>
       <i className={iconclass}></i> 
       <input style={{paddingRight: iconclass?"40px":"10px"}} ref={inpRef} onFocus={() => onFocus&&onFocus()} placeholder={placeholder} type={type} value={value} onChange={(e) => onChange&&onChange(e)} name={name} checked={checked} disabled={disabled} onKeyUp={(e) => onKeyUp&&onKeyUp(e)}/>

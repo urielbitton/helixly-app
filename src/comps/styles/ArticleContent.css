@@ -1,3 +1,6 @@
+.articlecontent {
+  border-radius: 15px;
+}
 .articlecontent .headercont {
   width: 100%;
 }
@@ -9,7 +12,11 @@
 .articlecontent .headercont h1 {
   color: #333;
   font-size: 42px;
-  margin-top: 15px;
+  margin: 25px 0;
+  margin-top: 35px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0 20px;
 }
 .articlecontent .metadatacont {
   margin: 20px 0;
@@ -18,19 +25,20 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+  padding: 0 20px;
 }
 .articlecontent .metadatacont img {
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  margin-right: 20px;
+  margin-right: 10px;
 }
-.articlecontent .metadatacont h6 {
+.articlecontent .metadatacont > h6 {
   font-size: 15px;
   color: #555;
   padding: 5px;
 }
-.articlecontent .metadatacont h6::after {
+.articlecontent .metadatacont > h6::after {
   position: relative;
   top: -2px;
   content: '•';
@@ -39,21 +47,23 @@
   margin-left: 15px;
   color: #ccc;
 }
-.articlecontent .metadatacont h6:last-child::after {
+.articlecontent .metadatacont > h6:last-child::after {
   content: '';
 }
-.articlecontent .metadatacont h6 span {
+.articlecontent .metadatacont > h6 span {
   color: #aaa;
   font-size: 13px;
 }
-.articlecontent .metadatacont h6 i {
+.articlecontent .metadatacont > h6 i {
   margin-left: 8px;
   color: #555;
 }
 .articlecontent .textcontent {
   margin: 45px 0;
   line-height: 1.9;
-  font-size: 17px;
+  font-size: 16px;
   color: #333;
+  white-space: pre-wrap;
+  padding: 0 20px;
 }
 

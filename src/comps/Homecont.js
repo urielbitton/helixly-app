@@ -11,13 +11,13 @@ import PostPage from './PostPage'
 
 export default function Homecont() {
 
-  const {posts} = useContext(StoreContext)
+  const {posts} = useContext(StoreContext) 
 
   const postpage = posts && posts.map(el => {
     return <Route path={`/posts/${el.id}`}>
       <PostPage el={el} />
     </Route>
-  })
+  }) 
 
   return (
     <div className="homecont"> 

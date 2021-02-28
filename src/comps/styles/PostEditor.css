@@ -1,0 +1,64 @@
+.posteditorcont {
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  min-height: 400px;
+  max-height: 80vh;
+  overflow: hidden;
+}
+.posteditorinner {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  padding-right: 30px;
+}
+.posteditorcont > button {
+  margin-bottom: 10px;
+}
+.posteditorcont .titleinput {
+  width: 100%;
+  margin: 20px 0;
+  margin-top: 35px;
+  border: none;
+  font-size: 45px;
+  font-weight: 600;
+  resize: none;
+  min-height: 50px;
+}
+.posteditorcont .titleinput::placeholder {
+  font-size: 45px;
+  font-weight: 600;
+}
+.posteditorcont .posttextcontent {
+  border: none;
+  font-size: 15px;
+  resize: none;
+  width: 100%;
+  line-height: 2;
+  padding-bottom: 50px;
+}
+.posteditorcont .posttextcontent::placeholder {
+  font-size: 15px;
+}
+.posteditorcont .tagsinput {
+  display: flex;
+  grid-gap: 3px;
+}
+.posteditorcont .tagsinput input {
+  border: none;
+  margin-bottom: 40px;
+  padding: 0;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color);
+}
+.posteditorcont .tagsinput::before {
+  content: '#';
+  color: var(--color)
+}
+.posteditorcont .tagsinput input::placeholder {
+  font-size: 15px;
+  font-weight: 600;
+}
+

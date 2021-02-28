@@ -31,7 +31,6 @@ export default function PostSidebar(props) {
         </div>
       </div>
       <div className="postauthorcont">
-        <h5>About the Author</h5>
         <h6 className="authorcont"><img src={profpic} alt=""/>{author}</h6>
         <p>
           Hi i'm an avid web and app developer in search for creativity and always going after new ideas. Developer of Reactor JS
@@ -40,6 +39,10 @@ export default function PostSidebar(props) {
           <AppButton title="Follow" size={14} icon="far fa-plus" bg="#e6e6e6" />
           <AppButton title="Message" size={14} icon="far fa-paper-plane" bg="#e6e6e6"/>
         </div>
+        <br/>
+        <button>View Profile</button>
+        <hr />
+        <h6 className="weblink"><i class="far fa-link"></i><a href="https://google.com" target="_blank" rel="noreferrer">www.google.com</a></h6>
       </div>
     </div>
   )

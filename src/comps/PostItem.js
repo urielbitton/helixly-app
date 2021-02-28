@@ -5,7 +5,7 @@ import './styles/PostItem.css'
 
 export default function PostItem(props) {
 
-  const {id, title, cover, descript, tags, category, author, profpic, datecreated} = props.el
+  const {id, title, cover, content, tags, category, author, profpic, datecreated} = props.el
   const history = useHistory()
 
   function shortenMsgs(text,num) {
@@ -26,7 +26,7 @@ export default function PostItem(props) {
       <div className="infocont">
         <div className="headercont">
           <h3 onClick={() => history.push(`/posts/${id}`)}>{shortenMsgs(title,82)}</h3>
-          <p>{shortenMsgs(descript,140)}</p>
+          <p>{shortenMsgs(content.slice(0,150),140)}</p>
         </div>
         <div className="elementscont">
           <div className="authorcont">

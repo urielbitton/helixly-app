@@ -8,6 +8,8 @@ export default function HomeFeed() {
   const {posts, filters, activeFilter} = useContext(StoreContext)
 
   const postsrow = posts && posts
+    .slice(0)
+    .reverse()
     .filter(x => x.category.includes(activeFilter) || activeFilter==='All Posts') 
     .map(el => {
       return <PostItem el={el}/>
