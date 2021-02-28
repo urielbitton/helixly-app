@@ -3,8 +3,8 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: var(--shadow);
-  min-height: 400px;
-  max-height: 80vh;
+  min-height: 70vh;
+  max-height: 70vh;
   overflow: hidden;
 }
 .posteditorinner {
@@ -13,13 +13,22 @@
   height: 100%;
   padding-right: 30px;
 }
-.posteditorcont > button {
-  margin-bottom: 10px;
+.posteditorcont .coverimgcont {
+  display: flex;
+  align-items: flex-start;
+  grid-gap: 40px;
+}
+.posteditorcont .coverimgplace {
+  width: 200px;
+  height: 100px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
 }
 .posteditorcont .titleinput {
   width: 100%;
-  margin: 20px 0;
-  margin-top: 35px;
+  margin: 30px 0;
+  margin-bottom: 40px;
   border: none;
   font-size: 45px;
   font-weight: 600;
@@ -28,18 +37,17 @@
 }
 .posteditorcont .titleinput::placeholder {
   font-size: 45px;
-  font-weight: 600;
 }
 .posteditorcont .posttextcontent {
-  border: none;
-  font-size: 15px;
-  resize: none;
-  width: 100%;
   line-height: 2;
-  padding-bottom: 50px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 16px;
+  width: 100%;
+  resize: none;
 }
 .posteditorcont .posttextcontent::placeholder {
-  font-size: 15px;
+  font-size: 16px;
 }
 .posteditorcont .tagsinput {
   display: flex;
@@ -61,4 +69,6 @@
   font-size: 15px;
   font-weight: 600;
 }
-
+.uploadpiccover {
+  display: none;
+}

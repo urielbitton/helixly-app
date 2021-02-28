@@ -3,16 +3,40 @@ import {AppInput} from './AppInputs'
 import TextareaAutosize from 'react-textarea-autosize'
 import './styles/PostEditor.css'
 import { StoreContext } from './StoreContext'
+import AppButton from './AppButton'
 
 export default function PostEditor(props) {
 
-  const {editData} = useContext(StoreContext)
-  const {title, setTitle, tags, setTags, content, setContent} = props
+  const {editData, editMode, setEditData} = useContext(StoreContext)
+  const {title, setTitle, tags, setTags, content, setContent, cover, setCover} = props
+ 
+  function uploadImg() {
+    let file = document.querySelector(".uploadpiccover").files[0]
+    if(file.size <= 3097152) {  
+      let reader = new FileReader()
+      reader.onloadend = function(){
+        setCover(reader.result)
+        editMode&&setEditData({...editData,cover:reader.result})
+      } 
+      if(file) {
+        reader.readAsDataURL(file)
+      } 
+    }
+    else {
+      alert('Image is too large (max. 4MB)')
+    }
+  } 
 
   return ( 
     <div className="posteditorcont">
       <div className="posteditorinner">
-        <button>Add Cover Image</button>
+        <div className="coverimgcont">
+          <label>
+            <input type="file" className="uploadpiccover" onChange={() => uploadImg()}/>
+            <AppButton title="Add Cover Image" size={13} color="#555"/> 
+          </label>
+          <div className="coverimgplace" style={cover?{backgroundImage:`url(${cover})`}:editData.cover?{backgroundImage:`url(${editData.cover})`}:{display:'none'}}></div> 
+        </div>
         <TextareaAutosize 
           className="titleinput hidescroll" 
           autoFocus 
@@ -20,21 +44,21 @@ export default function PostEditor(props) {
           maxRows={3} 
           minRows={1} 
           cacheMeasurements 
-          onChange={(e) => setTitle(e.target.value)}
-          value={title || editData.title}
+          onChange={(e) => !editMode?setTitle(e.target.value):setEditData({...editData,title:e.target.value})}
+          value={!editMode?title:editData.title}
         />
         <AppInput 
           className="tagsinput" 
           placeholder="Add post tags (seperate by commas)"
-          onChange={(e) => setTags(e.target.value)}
-          value={tags || editData.tags}
-        />
+          onChange={(e) => !editMode?setTags(e.target.value):setEditData({...editData,tags:e.target.value})}
+          value={!editMode?tags:editData.tags}
+        /> 
         <TextareaAutosize 
           className="posttextcontent hidescroll" 
           placeholder="Post content here..." 
-          onChange={(e) => setContent(e.target.value)}
-          value={content || editData.content}
-          />
+          onChange={(e) => !editMode?setContent(e.target.value):setEditData({...editData,content:e.target.value})}
+          value={!editMode?content:editData.content}
+        />
       </div>
     </div>
   )

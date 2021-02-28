@@ -9,7 +9,7 @@ export default function BottomNav() {
   const location = useLocation()
 
   return (
-    <div className="bottomnav" style={{display: location.pathname.indexOf('posts')>-1?'none':'flex'}}>
+    <div className="bottomnav" style={{display: location.pathname.match(/(newpost)/)?'none':'flex'}}>
       <NavLink exact to="/" activeClassName="activenavlink" title="Home"><div className="navicon"><i className="fal fa-home-alt"></i></div></NavLink>
       <NavLink to="/readinglist" activeClassName="activenavlink" title="Reading List"><div className="navicon"><i className="fal fa-books"></i></div></NavLink>
       <Link to="/newpost" onClick={() => {setEditData({});!editMode&&setEditMode(false)}}><div className="navicon addericon" title="New Post"><i className="fal fa-plus"></i></div></Link>

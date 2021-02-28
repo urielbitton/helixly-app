@@ -7,7 +7,7 @@ import {StoreContext} from './StoreContext'
 export default function ArticleContent(props) {
 
   const {setEditData, setEditMode} = useContext(StoreContext)
-  const {id, title, cover, content, tags, category, author, profpic, datecreated, comments, minread} = props.props
+  const {id, title, cover, content, tags, author, profpic, datecreated, comments, minread} = props.props
   const history = useHistory()
 
   return (
@@ -18,7 +18,7 @@ export default function ArticleContent(props) {
         <div className="metadatacont">
           <img src={profpic} alt=""/>
           <h6>{author}</h6>
-          <h6><span>{category[0]}</span></h6>
+          <h6><span>{tags[0]}</span></h6>
           <h6><span>{datecreated}</span></h6>
           <h6><span>{minread} minute read</span></h6>
           <h6>{comments.length}<i className="far fa-comment"></i></h6>
@@ -28,6 +28,11 @@ export default function ArticleContent(props) {
       <article className="textcontent"> 
         {content}
       </article>
+      <div className="commentscont">
+        <div className="commentsheader">
+          <h3><i className="far fa-comment"></i>Comments ({comments.length})</h3>
+        </div>
+      </div>
     </div>
   ) 
 }

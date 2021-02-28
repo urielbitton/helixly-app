@@ -9,11 +9,12 @@ import firebase from 'firebase'
 
 export default function NewPost(props) {
 
-  const {posts, editMode, editData} = useContext(StoreContext)
+  const {posts, editMode, editData, setEditData} = useContext(StoreContext)
   const [postMode, setPostMode] = useState('edit')
-  const [title, setTitle] = useState('')
-  const [tags, setTags] = useState('')
-  const [content, setContent] = useState('')
+  const [title, setTitle] = useState(editData.title)
+  const [tags, setTags] = useState(editData.tags)
+  const [content, setContent] = useState(editData.content)
+  const [cover, setCover] = useState(editData.cover)
   const history = useHistory()
   const options = { year: 'numeric', month: 'long', day: 'numeric' }
   const thedate = new Date().toLocaleDateString('en', options).replace(',','')
@@ -24,7 +25,7 @@ export default function NewPost(props) {
       let postsObj = {
         id: db.collection("posts").doc().id,
         title,
-        cover: 'https://i.imgur.com/5lQjtxo.jpg',
+        cover,
         content, 
         tags: tags.split(','),
         category: ['General'],
@@ -46,27 +47,26 @@ export default function NewPost(props) {
     }
   }
   function savePost() {
-    if(true) {
-      let postObj = {
+    if(title.length && content.length) {
+      setEditData({
         id: editData.id,
-        title,
-        cover: 'https://i.imgur.com/5lQjtxo.jpg',
+        title, 
+        cover: editData.cover,
         content, 
-        tags: tags.split(','),
-        category: ['General'],
+        tags: editData.tags,
         author: 'Uriel Bitton',
         profpic: 'https://i.imgur.com/L76EEqM.jpg',
         datecreated: thedate,
-        comments: [],
-        minread: 3, 
-        favorites: 0,
-        saves: 0
-      }
+        comments: [], 
+        minread: editData.minread, 
+        favorites: editData.favorites,
+        saves: editData.saves
+      })
       posts && posts
       .filter(x => x.id===editData.id)
       .forEach(el => {
         let itemindex = posts.indexOf(el)
-        posts[itemindex] = postObj
+        posts[itemindex] = editData
       })
       db.collection('posts').doc('articles').update({
         allposts: posts
@@ -85,7 +85,16 @@ export default function NewPost(props) {
           <AppButton title="Edit" size={16} color="#555" className={postMode==='edit'&&"activetab"} onClick={() => setPostMode('edit')} />
           <AppButton title="Preview" size={16} color="#555" className={postMode==='preview'&&"activetab"} onClick={() => setPostMode('preview')} />
         </div>
-        <PostEditor title={title} setTitle={setTitle} tags={tags} setTags={setTags} content={content} setContent={setContent} />
+        <PostEditor 
+          title={title} 
+          setTitle={setTitle} 
+          tags={tags} 
+          setTags={setTags} 
+          content={content} 
+          setContent={setContent} 
+          cover={cover} 
+          setCover={setCover}
+        />
         <div className="postactions">
           <button onClick={() => !editMode?publishPost():savePost()}>{!editMode?'Publish':'Save Post'}</button>
           <button>Save Draft</button>

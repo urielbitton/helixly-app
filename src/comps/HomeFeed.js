@@ -5,12 +5,12 @@ import './styles/HomeFeed.css'
 
 export default function HomeFeed() {
 
-  const {posts, filters, activeFilter} = useContext(StoreContext)
+  const {posts, activeFilter} = useContext(StoreContext)
 
   const postsrow = posts && posts
     .slice(0)
     .reverse()
-    .filter(x => x.category.includes(activeFilter) || activeFilter==='All Posts') 
+    .filter(x => x.tags.includes(activeFilter) || activeFilter==='All Posts') 
     .map(el => {
       return <PostItem el={el}/>
   })
