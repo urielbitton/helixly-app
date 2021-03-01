@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import {AppInput} from './AppInputs'
-import TextareaAutosize from 'react-textarea-autosize'
+import TextAutosize from 'react-textarea-autosize'
 import './styles/PostEditor.css'
 import { StoreContext } from './StoreContext'
 import AppButton from './AppButton'
@@ -37,7 +37,7 @@ export default function PostEditor(props) {
           </label>
           <div className="coverimgplace" style={cover?{backgroundImage:`url(${cover})`}:editData.cover?{backgroundImage:`url(${editData.cover})`}:{display:'none'}}></div> 
         </div>
-        <TextareaAutosize 
+        <TextAutosize 
           className="titleinput hidescroll" 
           autoFocus 
           placeholder="Post title here..." 
@@ -53,7 +53,7 @@ export default function PostEditor(props) {
           onChange={(e) => !editMode?setTags(e.target.value):setEditData({...editData,tags:e.target.value})}
           value={!editMode?tags:editData.tags}
         /> 
-        <TextareaAutosize 
+        <TextAutosize 
           className="posttextcontent hidescroll" 
           placeholder="Post content here..." 
           onChange={(e) => !editMode?setContent(e.target.value):setEditData({...editData,content:e.target.value})}

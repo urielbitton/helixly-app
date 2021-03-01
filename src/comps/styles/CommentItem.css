@@ -1,0 +1,66 @@
+.commentitem {
+  display: flex;
+  align-items: flex-start;
+  margin: auto;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.commentitem .left {
+  margin-right: 15px;
+}
+.commentitem .left img {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  margin-top: 10px;
+}
+.commentitem .right {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+.commentitem .right h5 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.commentitem .right h5 span {
+  margin-left: 15px;
+  color: #aaa;
+  font-weight: 500;
+  font-size: 12px;
+}
+.commentitem .right h5 a:hover {
+  text-decoration: underline;
+}
+.commentitem .right h5 i {
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  color: #bbb;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+}
+.commentitem .commentbody p {
+  margin-top: 20px;
+}
+.commentitem .commentactions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  grid-gap: 10px;
+  margin-top: 30px;
+}
+.nestedcommentscont {
+  padding: 15px;
+  margin-top: 10px;
+}
+.nestedcommentscont .left img {
+  width: 30px;
+  height: 30px;
+}
+.nestedcommentscont p {
+  font-size: 14px;
+}

@@ -16,8 +16,6 @@ export default function NewPost(props) {
   const [content, setContent] = useState(editData.content)
   const [cover, setCover] = useState(editData.cover)
   const history = useHistory()
-  const options = { year: 'numeric', month: 'long', day: 'numeric' }
-  const thedate = new Date().toLocaleDateString('en', options).replace(',','')
   const user = firebase.auth().currentUser
 
   function publishPost() {
@@ -31,7 +29,7 @@ export default function NewPost(props) {
         category: ['General'],
         author: 'Uriel Bitton',
         profpic: 'https://i.imgur.com/L76EEqM.jpg',
-        datecreated: thedate,
+        datecreated: firebase.firestore.Timestamp.now(),
         comments: [],
         minread: 3, 
         favorites: 0,
@@ -56,7 +54,7 @@ export default function NewPost(props) {
         tags: editData.tags,
         author: 'Uriel Bitton',
         profpic: 'https://i.imgur.com/L76EEqM.jpg',
-        datecreated: thedate,
+        datecreated: firebase.firestore.Timestamp.now(),
         comments: [], 
         minread: editData.minread, 
         favorites: editData.favorites,

@@ -16,11 +16,12 @@
 .posteditorcont .coverimgcont {
   display: flex;
   align-items: flex-start;
-  grid-gap: 40px;
+  flex-direction: column;
+  grid-gap: 20px;
 }
 .posteditorcont .coverimgplace {
-  width: 200px;
-  height: 100px;
+  width: 95%;
+  height: 150px;
   background-position: center;
   background-size: cover;
   border-radius: 10px;
