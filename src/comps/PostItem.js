@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link, useHistory } from "react-router-dom"
 import AppButton from './AppButton'
 import './styles/PostItem.css'
+import {StoreContext} from './StoreContext'
 
 export default function PostItem(props) {
 
-  const {id, title, cover, content, tags, category, author, profpic, datecreated} = props.el
+  const {setCommentsScroll} = useContext(StoreContext)
+  const {id, title, cover, content, tags, category, author, profpic, datecreated, comments} = props.el
   const history = useHistory()
 
   function shortenMsgs(text,num) {
@@ -34,7 +36,7 @@ export default function PostItem(props) {
             <h6><span>{author}</span><small>{datecreated}</small></h6>
           </div>
           <div className="actionscont">
-            <AppButton title="2 Comments" icon="fal fa-comment" />
+            <AppButton title={`${comments.length} ${comments.length===1?'comment':'comments'}`} icon="fal fa-comment" onClick={() => {history.push(`/posts/${id}`);setCommentsScroll(prev => !prev)}} />
             <AppButton title="Save" icon="fal fa-bookmark" />
           </div>
         </div>

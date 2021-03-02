@@ -35,6 +35,7 @@ const StoreContextProvider = (props) => {
   const [activeFilter, setActiveFilter] = useState('All Posts')
   const [editData, setEditData] = useState({})
   const [editMode, setEditMode] = useState(false)
+  const [commentsScroll, setCommentsScroll] = useState(false)
 
   useEffect(() => {
     db.collection('posts').doc('articles').onSnapshot(snap => {
@@ -45,7 +46,7 @@ const StoreContextProvider = (props) => {
   return (
     <StoreContext.Provider value={{
       posts, setPosts, filters, setFilters, activeFilter, setActiveFilter, editData, setEditData,
-      editMode, setEditMode
+      editMode, setEditMode, commentsScroll, setCommentsScroll
     }}>
       {props.children}
     </StoreContext.Provider>

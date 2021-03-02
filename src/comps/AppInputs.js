@@ -12,7 +12,7 @@ export function AppInput(props) {
       <input style={{paddingRight: iconclass?"40px":"10px"}} ref={inpRef} onFocus={() => onFocus&&onFocus()} placeholder={placeholder} type={type} value={value} onChange={(e) => onChange&&onChange(e)} name={name} checked={checked} disabled={disabled} onKeyUp={(e) => onKeyUp&&onKeyUp(e)}/>
     </label>
   )   
-}   
+}    
 
 export function AppSelect(props) {
   const {multiple, options, regname, title, onChange, value} = props
