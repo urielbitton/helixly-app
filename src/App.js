@@ -4,18 +4,18 @@ import "./styles.css"
 import AppContainer from './comps/AppContainer'
 import Login from './comps/Login'
 import StoreContextProvider from './comps/StoreContext'
-import Fire from './comps/Fire'
+import {db} from './comps/Fire'
 import firebase from 'firebase'
  
 export default function App() {
-
+ 
   const [user, setUser] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
-  const [hasAccount, setHasAccount] = useState(false)
+  const [hasAccount, setHasAccount] = useState(true)
 
   const clearInputs = () => {
     setEmail('')
@@ -25,10 +25,11 @@ export default function App() {
     setEmailError('')
     setPasswordError('')
   }
-
+ 
   const handleLogin = () => {
     clearErrors()
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(err => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .catch(err => {
       switch(err.code) {
         case "auth/invalid-email":
         case "auth/user/disabled":
@@ -39,9 +40,9 @@ export default function App() {
           setPasswordError(err.message)
         break
         default:
-      } 
+      }  
     })
-  }
+  } 
   const handleSignup = () => {
     clearErrors()
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(err => {
@@ -53,18 +54,18 @@ export default function App() {
         case "auth/weak-password":
           setPasswordError(err.message)
         break
-        default:
+        default: 
       }
     })
-    Fire.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
       if(user) {
         user.updateProfile({
-          displayName: name
-        })
-        const usersRef = firebase.database().ref('users').child(user.uid)
-        const users = {
+          displayName: name,
+          photoURL: 'https://i.imgur.com/yxij2KH.jpg'
+        }) 
+        const userinfo = {
           firstname: name.split(' ')[0],
-          lastname: name.split(' ')[0],
+          lastname: name.split(' ')[1],
           email: user.email,
           phone: "",
           city: "",
@@ -72,15 +73,17 @@ export default function App() {
           jobtitle: "",
           website:  "",
           country: "",
-          profimg: "",
+          profimg: "https://i.imgur.com/1OKoctC.jpg",
           settings: {
             
           } 
-        } 
-        usersRef.set(users)
-      }
+        }
+        db.collection('users').doc(user.uid).set({
+          userinfo
+        }) 
+      }//if (user)
       else {
-        setUser('')
+        setUser(null)
       } 
     }) 
   }
@@ -94,14 +97,14 @@ export default function App() {
         setUser(user)
       }
       else {
-        setUser('')
+        setUser(null)
       }
     })
-  }
+  } 
 
-  useEffect(() => {
+  useEffect(() => { 
     authListener()
-  },[]) 
+  },[])  
 
   return (
     <div className="App">

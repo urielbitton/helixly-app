@@ -2,11 +2,14 @@ import React, { useContext, useState, useEffect } from 'react'
 import AppButton from './AppButton'
 import { StoreContext } from './StoreContext'
 import './styles/HomeSidebar.css'
+import firebase from 'firebase'
+import {db} from './Fire'
 
 export default function HomeSidebar() {
 
-  const {filters, activeFilter, setActiveFilter} = useContext(StoreContext)
+  const {myuser, filters, activeFilter, setActiveFilter} = useContext(StoreContext)
   const [dayTime, setDayTime] = useState('')
+  const user = firebase.auth().currentUser
 
   const filtersrow = filters && filters.map(el => {
     return <h5 onClick={() => setActiveFilter(el.name)} className={el.name===activeFilter?"activefilter":""}>
@@ -28,9 +31,9 @@ export default function HomeSidebar() {
   return (
     <div className="homesidebar"> 
       <div className="greetdiv">
-        <h4>Good {dayTime} Emily</h4>
+        <h4>Good {dayTime} {myuser.firstname}</h4> 
         <div>
-          <img src="https://i.imgur.com/L76EEqM.jpg" alt="" />
+          <img src={user.photoURL} alt="" />
           <AppButton icon="fas fa-user" iconcolor="#555" color="#555" title="My Account" size={13}/>
         </div>
       </div>

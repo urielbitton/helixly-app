@@ -1,11 +1,14 @@
 import React, {createContext, useEffect, useState} from 'react'
 import {db} from './Fire'
+import firebase from 'firebase'
 
 export const StoreContext = createContext()
 
 const StoreContextProvider = (props) => {
 
+  const user = firebase.auth().currentUser
   const [posts, setPosts] = useState([])
+  const [myuser, setMyUser] = useState([])
   const [filters, setFilters] = useState([
     {
       name: 'All Posts',
@@ -40,12 +43,16 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     db.collection('posts').doc('articles').onSnapshot(snap => {
       setPosts(snap.data().allposts)  
-    })
-  },[])
+    }) 
+    user&&db.collection('users').doc(user.uid).onSnapshot(snap => {
+      const userdata = snap.data()
+      setMyUser(userdata.userinfo)
+   })
+  },[user])
 
   return (
     <StoreContext.Provider value={{
-      posts, setPosts, filters, setFilters, activeFilter, setActiveFilter, editData, setEditData,
+      posts, setPosts, myuser, setMyUser, filters, setFilters, activeFilter, setActiveFilter, editData, setEditData,
       editMode, setEditMode, commentsScroll, setCommentsScroll
     }}>
       {props.children}

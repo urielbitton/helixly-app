@@ -64,6 +64,8 @@ nav .toolbar {
 nav .toolbar i {
   color: #777;
   font-size: 20px;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 nav .toolbar .darkmodecont {
   display: flex;

@@ -2,9 +2,11 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import {AppInput, AppSwitch} from './AppInputs'
 import './styles/Navbar.css'
+import firebase from 'firebase'
 
 export default function Navbar() {
 
+  const user = firebase.auth().currentUser
   const history = useHistory()
 
   return (
@@ -19,10 +21,11 @@ export default function Navbar() {
           <div className="darkmodecont">
             <i className="fal fa-moon-stars"></i>
             <AppSwitch />
-          </div>
+          </div> 
+          <i className="fal fa-sign-out" onClick={() => firebase.auth().signOut()}></i>
         </div>
         <div className="profcont">
-          <img src="https://i.imgur.com/L76EEqM.jpg" alt="" />
+          <img src={user.photoURL} alt="" />
           <i className="fas fa-angle-down"></i> 
         </div>
       </div>
