@@ -1,16 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link, useHistory } from "react-router-dom"
 import AppButton from './AppButton'
 import './styles/PostItem.css'
 import {StoreContext} from './StoreContext'
 import LikeBtn from './LikeBtn'
 import BookmarkBtn from './BookmarkBtn'
+import {db} from './Fire'
+import firebase from 'firebase'
 
 export default function PostItem(props) {
 
-  const {allusers, setCommentsScroll} = useContext(StoreContext)
+  const {setCommentsScroll} = useContext(StoreContext)
+  const [userData, setUserData] = useState([])
   const {id, title, cover, content, tags, category, authorid, author, datecreated, comments, favlist, saves} = props.el
-  const history = useHistory()   
+  const history = useHistory()  
+  const user = firebase.auth().currentUser
 
   function shortenMsgs(text,num) {
     if(text.length > num) {
@@ -21,6 +25,12 @@ export default function PostItem(props) {
       return text
     }
   }
+
+  useEffect(() => {
+    db.collection('users').doc(authorid).onSnapshot(snap => {
+      setUserData(snap.data().userinfo)
+    })
+  },[]) 
 
   return (
     <div className="postitemcont">
@@ -34,7 +44,7 @@ export default function PostItem(props) {
         </div>
         <div className="elementscont">
           <div className="authorcont">
-            <img src={""} alt=""/>  
+            <img src={userData.profimg} alt=""/>  
             <h6><span>{author}</span><small>{datecreated}</small></h6>
           </div>
           <div className="actionscont">
