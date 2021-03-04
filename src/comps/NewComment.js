@@ -34,7 +34,7 @@ export default function NewComment(props) {
   return (
     <div className="addnewcommentcont" style={{display: show?"flex":"none"}}>
       <div className="left">
-        <img src="https://i.imgur.com/L76EEqM.jpg" alt=""/>
+        <img src={user.photoURL} alt=""/>
       </div>
       <div className="right">
         <TextAutosize 

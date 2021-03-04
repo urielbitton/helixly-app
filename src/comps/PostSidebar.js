@@ -7,7 +7,7 @@ import BookmarkBtn from './BookmarkBtn'
 
 export default function PostSidebar(props) {
 
-  const {comments, favlist, saves, profpic, author} = props.props
+  const {comments, favlist, saves, author} = props.props
   const history = useHistory()
   const user = firebase.auth().currentUser
 
@@ -34,7 +34,7 @@ export default function PostSidebar(props) {
         </div>
       </div>
       <div className="postauthorcont">
-        <h6 className="authorcont"><img src={profpic} alt=""/>{author}</h6>
+        <h6 className="authorcont"><img src="" alt=""/>{author}</h6>
         <p>
           Hi i'm an avid web and app developer in search for creativity and always going after new ideas. Developer of Reactor JS
         </p>

@@ -61,9 +61,10 @@ export default function App() {
       if(user) {
         user.updateProfile({
           displayName: name,
-          photoURL: 'https://i.imgur.com/yxij2KH.jpg'
+          photoURL: 'https://i.imgur.com/1OKoctC.jpg'
         }) 
         const userinfo = {
+          uid: user.uid,
           firstname: name.split(' ')[0],
           lastname: name.split(' ')[1],
           email: user.email,
@@ -86,9 +87,6 @@ export default function App() {
         setUser(null)
       } 
     }) 
-  }
-  const handleLogout = () => {
-    firebase.auth().signOut()
   }
   const authListener = () => {
     firebase.auth().onAuthStateChanged(user => {

@@ -8,9 +8,9 @@ import BookmarkBtn from './BookmarkBtn'
 
 export default function PostItem(props) {
 
-  const {setCommentsScroll} = useContext(StoreContext)
-  const {id, title, cover, content, tags, category, author, profpic, datecreated, comments, favlist, saves} = props.el
-  const history = useHistory()
+  const {allusers, setCommentsScroll} = useContext(StoreContext)
+  const {id, title, cover, content, tags, category, authorid, author, datecreated, comments, favlist, saves} = props.el
+  const history = useHistory()   
 
   function shortenMsgs(text,num) {
     if(text.length > num) {
@@ -34,7 +34,7 @@ export default function PostItem(props) {
         </div>
         <div className="elementscont">
           <div className="authorcont">
-            <img src={profpic} alt=""/>
+            <img src={""} alt=""/>  
             <h6><span>{author}</span><small>{datecreated}</small></h6>
           </div>
           <div className="actionscont">

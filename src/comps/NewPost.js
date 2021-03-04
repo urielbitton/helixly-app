@@ -28,7 +28,7 @@ export default function NewPost(props) {
         tags: tags.split(','),
         category: ['General'],
         author: user.displayName,
-        profpic: user.photoURL,
+        authorid: user.uid,
         datecreated: firebase.firestore.Timestamp.now(),
         comments: [],
         minread: 3, 
