@@ -80,4 +80,8 @@
 .postitemcont .appbutton {
   margin-left: 10px;
 }
-
+.postitemcont .actionscont i.fa-bookmark {
+  margin-left: 20px;
+  font-size: 18px;
+  color: #777;
+}

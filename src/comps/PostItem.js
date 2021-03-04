@@ -3,11 +3,13 @@ import { BrowserRouter as Router,Switch,Route,Link, useHistory } from "react-rou
 import AppButton from './AppButton'
 import './styles/PostItem.css'
 import {StoreContext} from './StoreContext'
+import LikeBtn from './LikeBtn'
+import BookmarkBtn from './BookmarkBtn'
 
 export default function PostItem(props) {
 
   const {setCommentsScroll} = useContext(StoreContext)
-  const {id, title, cover, content, tags, category, author, profpic, datecreated, comments} = props.el
+  const {id, title, cover, content, tags, category, author, profpic, datecreated, comments, favlist, saves} = props.el
   const history = useHistory()
 
   function shortenMsgs(text,num) {
@@ -36,9 +38,10 @@ export default function PostItem(props) {
             <h6><span>{author}</span><small>{datecreated}</small></h6>
           </div>
           <div className="actionscont">
-            <AppButton title={`${comments.length} ${comments.length===1?'comment':'comments'}`} icon="fal fa-comment" onClick={() => {history.push(`/posts/${id}`);setCommentsScroll(prev => !prev)}} />
-            <AppButton title="Save" icon="fal fa-bookmark" />
-          </div>
+            <LikeBtn favlist={favlist} post={props.el} likeaction="post"/>
+            <AppButton title={`${comments.length} ${comments.length===1?"comment":"comments"}`} icon="fal fa-comment" onClick={() => {history.push(`/posts/${id}`);setCommentsScroll(prev => !prev)}} />
+            <BookmarkBtn saves={saves} post={props.el} /> 
+          </div> 
         </div>
       </div>
     </div>

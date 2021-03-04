@@ -120,4 +120,14 @@ hr {
   text-decoration: underline;
   color: var(--color);
 }
-
+i.fa-bookmark, i.fa-heart, i.fa-comment {
+  cursor: pointer;
+}
+i.fa-bookmark.saved {
+  color: var(--color);
+  font-weight: 600;
+}
+i.fa-heart.liked {
+  color: var(--color);
+  font-weight: 600;
+}

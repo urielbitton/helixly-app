@@ -8,7 +8,7 @@ export default function AppButton(props) {
   return (
     <div className={`${className} appbutton`} style={{background:bg}} onClick={() => onClick&&onClick()}>
       <h6 style={{fontSize:size,color:color}}>
-        {icon&&<i className={icon} style={{color:iconcolor}}></i>}
+        {icon&&<i className={icon} style={{color:iconcolor, margin:title?"":"0"}}></i>}
         {title}
       </h6>
     </div>

@@ -5,10 +5,11 @@ import AppButton from './AppButton'
 import NestedCommentItem from './NestedCommentItem'
 import { Link } from 'react-router-dom'
 import NewComment from './NewComment'
+import LikeBtn from './LikeBtn'
 
 export default function CommentItem(props) {
 
-  const {authorid, authorname, authorpic, text, dateadded, favorites, comments} = props.el
+  const {authorid, authorname, authorpic, text, dateadded, favlist, comments} = props.el
   const [showReply, setShowReply] = useState(false)
  
   const nestedcommentsrow = comments && comments.map(el => {
@@ -26,7 +27,7 @@ export default function CommentItem(props) {
           <p>{text}</p>
         </div>
         <div className="commentactions">
-          <AppButton title={`${favorites} ${favorites===1?'like':'likes'}`} icon="fal fa-heart"/>
+          <LikeBtn favlist={favlist} comment={props.el} likeaction="comment" />
           <AppButton title={!showReply?"reply":'dismiss'} icon={!showReply?"fal fa-comment":"fal fa-comment-slash"} onClick={() => setShowReply(prev => !prev)}/>
         </div>
         <NewComment comments={comments} show={showReply?true:false} setShowReply={setShowReply}/>

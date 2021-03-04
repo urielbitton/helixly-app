@@ -2,25 +2,28 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import AppButton from './AppButton'
 import './styles/PostSidebar.css'
+import firebase from 'firebase'
+import BookmarkBtn from './BookmarkBtn'
 
 export default function PostSidebar(props) {
 
-  const {comments, favorites, saves, profpic, author} = props.props
+  const {comments, favlist, saves, profpic, author} = props.props
   const history = useHistory()
+  const user = firebase.auth().currentUser
 
-  return (
-    <div className="postsidebar">
+  return ( 
+    <div className="postsidebar"> 
       <div className="breadcrumbscont">
         <h5 onClick={() => history.goBack()}><i className="fal fa-long-arrow-alt-left"></i></h5>
       </div>
       <div className="sharescont">
         <div>
-          <div className="iconcont"><i className="far fa-heart"></i></div>
-          <h6>{favorites}</h6>
-        </div>
+          <div className="iconcont"><i className="far fa-heart" style={favlist.includes(user.uid)?{color:'var(--color)',fontWeight:600}:{}}></i></div>
+          <h6>{favlist.length}</h6>
+        </div> 
         <div>
-          <div className="iconcont"><i className="far fa-bookmark"></i></div>
-          <h6>{saves}</h6>
+          <div className="iconcont"><BookmarkBtn saves={saves} post={props.props}/></div>
+          <h6>{saves.length}</h6>
         </div>
         <div>
           <div className="iconcont"><i className="far fa-comment"></i></div>

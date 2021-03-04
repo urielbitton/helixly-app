@@ -11,13 +11,14 @@ export default function NewComment(props) {
   const {posts} = useContext(StoreContext)
   const {comments, show=true, setShowReply} = props
   const [commentText, setCommentText] = useState('')
+  const user = firebase.auth().currentUser
 
   function postComment() {
     let commentObj = {
-      authorid: 'njs84ngsfngdsfhj',
-      authorname: 'Uriel Bitton',
-      authorpic: 'https://i.imgur.com/L76EEqM.jpg',
-      favorites: 0,
+      authorid: user.uid,
+      authorname: user.displayName,
+      authorpic: user.photoURL,
+      favlist: [],
       text: commentText,
       dateadded: firebase.firestore.Timestamp.now(),
       comments: []

@@ -1,10 +1,10 @@
 import React from 'react'
 import StampToDate from './StampToDate'
-import AppButton from './AppButton'
+import LikeBtn from './LikeBtn'
 
 export default function NestedCommentItem(props) {
 
-  const {authorid, authorname, authorpic, text, dateadded, favorites} = props.el
+  const {authorid, authorname, authorpic, text, dateadded, favlist} = props.el
 
   return (
     <div className="commentitem">
@@ -17,7 +17,7 @@ export default function NestedCommentItem(props) {
           <p>{text}</p>
         </div>
         <div className="commentactions">
-          <AppButton title={`${favorites} ${favorites.length>1?'likes':'like'}`} icon="fal fa-heart"/>
+         <LikeBtn favlist={favlist} comment={props.el} likeaction="comment" /> 
         </div>
       </div>
     </div>
