@@ -44,13 +44,24 @@ nav .profcont {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 55px;
+  width: 130px;
   cursor: pointer;
+  transition: all 0.2s;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 40px;
+}
+nav .profcont:hover {
+  background: #fff;
 }
 nav .profcont img {
   width: 32px;
   height: 32px;
   border-radius: 100%;
+}
+nav .profcont h6 {
+  color: #333;
+  font-size: 12px;
 }
 nav .profcont i {
   color: #777;

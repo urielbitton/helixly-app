@@ -27,13 +27,14 @@ export default function NewPost(props) {
         content, 
         tags: tags.split(','),
         category: ['General'],
-        author: user.displayName,
+        authorname: user.displayName,
         authorid: user.uid,
+        authorimg: user.photoURL,
         datecreated: firebase.firestore.Timestamp.now(),
         comments: [],
         minread: 3, 
-        favorites: 0,
-        saves: 0
+        favlist: [],
+        saves: [] 
       }
       db.collection('posts').doc('articles').update({
         allposts: firebase.firestore.FieldValue.arrayUnion(postsObj)

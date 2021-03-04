@@ -8,16 +8,22 @@ import Settings from './Settings'
 import './styles/Homecont.css'
 import { StoreContext } from './StoreContext'
 import PostPage from './PostPage'
+import Profile from './Profile'
 
 export default function Homecont() {
 
-  const {posts} = useContext(StoreContext) 
+  const {posts, allusers} = useContext(StoreContext) 
 
   const postpage = posts && posts.map(el => {
     return <Route path={`/posts/${el.id}`}>
       <PostPage el={el} />
     </Route>
   }) 
+  const profilepage = allusers && allusers.map(el => {
+    return <Route path={`/profile/${el.userinfo.uid}`}>
+      <Profile el={el.userinfo} />
+    </Route>
+  })
 
   return (
     <div className="homecont"> 
@@ -39,6 +45,7 @@ export default function Homecont() {
             <Settings />
           </Route>
           {postpage}
+          {profilepage}
         </Switch>
       </div>
     </div> 

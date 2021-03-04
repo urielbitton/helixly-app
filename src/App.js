@@ -75,6 +75,14 @@ export default function App() {
           website:  "",
           country: "",
           profimg: "https://i.imgur.com/1OKoctC.jpg",
+          bio: '',
+          followers: [],
+          socials: {
+            facebook: '',
+            twitter: '',
+            instagram: '',
+            linkedin: ''
+          },
           settings: {
             
           } 

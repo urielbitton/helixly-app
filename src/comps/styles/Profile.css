@@ -1,0 +1,132 @@
+.profilepage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.profilepage > div {
+  background: #fff;
+  box-shadow: var(--shadow);
+  padding: 15px;
+  border-radius: 3px;
+}
+.profilepage .profilesidebar {
+  width: 260px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  grid-gap: 15px;
+  padding-top: 30px;
+}
+.profilepage .profilecontent {
+  width: 720px;
+  padding: 0;
+}
+.profilepage .profilerightbar {
+  width: 300px;
+}
+
+.profilesidebar .profcont {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-position: center;
+  background-size: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.profilesidebar .proftitles {
+  text-align: center;
+}
+.profilesidebar .proftitles h4 {
+  color: #333;
+  font-size: 17px;
+}
+.profilesidebar .proftitles h6 {
+  color: #aaa;
+  font-weight: 500;
+}
+.profilesidebar .statscont {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 30px auto;
+  width: 100%;
+}
+.profilesidebar .statscont hr {
+  height: 40px;
+  width: 1px;
+  background: #eee;
+}
+.profilesidebar .statscont h3 {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #333;
+}
+.profilesidebar .statscont h3 small {
+  font-size: 11px;
+  color: #999;
+  font-weight: 500;
+}
+.profilesidebar .biocont {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #555;
+  width: 100%;
+}
+.profilesidebar .appbutton {
+  width: 100%;
+}
+.profilesidebar .socialscont {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 8px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+.profilesidebar .socialscont i {
+  width: 20px;
+  margin-right: 15px;
+  color: #aaa;
+}
+.profilesidebar .socialscont h5 {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.profilesidebar .socialscont h5 a {
+  color: #aaa;
+}
+.profilesidebar .socialscont h5:hover a, .profilesidebar .socialscont h5:hover i {
+  color: var(--color)
+}
+
+.profilecontentinner {
+  width: 100%;
+  padding: 15px;
+}
+.profilecontentheader {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

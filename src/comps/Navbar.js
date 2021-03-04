@@ -20,12 +20,13 @@ export default function Navbar() {
         <div className="toolbar">
           <div className="darkmodecont">
             <i className="fal fa-moon-stars"></i>
-            <AppSwitch />
+            <AppSwitch onChange={() => null}/>
           </div> 
           <i className="fal fa-sign-out" onClick={() => firebase.auth().signOut()}></i>
         </div>
         <div className="profcont">
           <img src={user.photoURL} alt="" />
+          <h6>{user.displayName}</h6>
           <i className="fas fa-angle-down"></i> 
         </div>
       </div>

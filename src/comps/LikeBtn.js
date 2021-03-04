@@ -18,7 +18,7 @@ export default function LikeBtn(props) {
         let itemindex = post.favlist.indexOf(el)
         post.favlist.splice(itemindex)
       })
-    }
+    } 
     else {
       post.favlist.push(user.uid)
     }
@@ -44,7 +44,7 @@ export default function LikeBtn(props) {
   }
 
   return (
-    <AppButton 
+    <AppButton  
       title={`${favlist.length} ${!short?(favlist.length===1?'like':'likes'):""}`} 
       icon={((post&&post.favlist.includes(user.uid))||(comment&&comment.favlist.includes(user.uid)))?"fal fa-heart liked":"fal fa-heart"}
       iconcolor=""

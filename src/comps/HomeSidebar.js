@@ -3,13 +3,14 @@ import AppButton from './AppButton'
 import { StoreContext } from './StoreContext'
 import './styles/HomeSidebar.css'
 import firebase from 'firebase'
-import {db} from './Fire'
+import { useHistory } from 'react-router-dom'
 
 export default function HomeSidebar() {
 
   const {myuser, filters, activeFilter, setActiveFilter} = useContext(StoreContext)
   const [dayTime, setDayTime] = useState('')
   const user = firebase.auth().currentUser
+  const history = useHistory()
 
   const filtersrow = filters && filters.map(el => {
     return <h5 onClick={() => setActiveFilter(el.name)} className={el.name===activeFilter?"activefilter":""}>
@@ -34,7 +35,14 @@ export default function HomeSidebar() {
         <h4>Good {dayTime} {myuser.firstname}</h4> 
         <div>
           <img src={user.photoURL} alt="" />
-          <AppButton icon="fas fa-user" iconcolor="#555" color="#555" title="My Account" size={13}/>
+          <AppButton 
+            icon="fas fa-user" 
+            iconcolor="#555" 
+            color="#555" 
+            title="My Account" 
+            size={13}
+            onClick={() => history.push(`/profile/${user.uid}`)}
+          />
         </div>
       </div>
       <div className="filters">
