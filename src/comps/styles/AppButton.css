@@ -1,6 +1,6 @@
 .appbutton {
   padding: 7px 12px;
-  border-radius: 6px;
+  border-radius: 5px;
   background: var(--pale);
   display: flex;
   justify-content: center;

@@ -1,6 +1,9 @@
+.postsidebar {
+  height: auto;
+}
 .postsidebar > div {
   margin-bottom: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .postsidebar .breadcrumbscont {
   width: 100%;
@@ -86,12 +89,16 @@
   align-items: center;
   margin-bottom: 10px;
   font-size: 16px;
+  cursor: pointer;
 }
 .postauthorcont h6 img {
   width: 40px;
   height: 40px;
   border-radius: 100%;
   margin-right: 10px;
+}
+.postauthorcont h6:hover span {
+  text-decoration: underline;
 }
 .postauthorcont p {
   font-size: 15px;

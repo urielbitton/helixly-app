@@ -42,7 +42,7 @@ export default function PostSidebar(props) {
         </div>
       </div> 
       <div className="postauthorcont">
-        <h6 className="authorcont"><img src={authorimg} alt=""/>{authorname}</h6>
+        <h6 className="authorcont" onClick={() => history.push(`/profile/${authorid}`)}><img src={authorimg} alt=""/><span>{authorname}</span></h6>
         <p>{authorUser.bio}</p>
         <div className="authorbtns">
           <AppButton title="Follow" size={14} icon="far fa-plus" bg="#e6e6e6" />

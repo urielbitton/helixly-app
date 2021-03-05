@@ -3,7 +3,7 @@
   height: 210px;
   background: #fff;
   box-shadow: var(--shadow);
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
   width: 100%;
 }
 .postitemcont .authorcont, .postitemcont .actionscont {
@@ -85,3 +84,33 @@
   font-size: 18px;
   color: #777;
 }
+
+@media (max-width:780px) {
+  .postitemcont {
+    flex-direction: column;
+    height: auto;
+  }
+  .postitemcont .covercont {
+    width: 100%;
+    height: 200px;
+  }
+  .postitemcont .infocont {
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+  .postitemcont .elementscont {
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width:473px) { 
+  .postitemcont .actionscont {
+    margin-top: 20px;
+  } 
+  .postitemcont .actionscont .appbutton {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+}
+

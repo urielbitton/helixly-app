@@ -7,6 +7,9 @@
   .grid {
     width: 100%;
   }
+  .homecont {
+    padding: 30px 10px;
+  }
 }
 @media (max-width:1080px) {
   .homepage {
@@ -16,3 +19,12 @@
     display: none;
   }
 }
+@media (max-width:740px) {
+  .bottomnav {
+    width: 95%;
+  }
+  nav .navgroup:last-child, nav .navgroup .appinput {
+    display: none;
+  } 
+}
+

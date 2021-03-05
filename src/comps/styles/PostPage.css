@@ -3,5 +3,6 @@
   grid-template-columns: 250px auto;
   grid-gap: 40px;
   padding-bottom: 100px;
+  align-items: flex-start;
 }
 
