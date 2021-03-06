@@ -4,12 +4,10 @@
   border-radius: 10px;
   box-shadow: var(--shadow);
   min-height: 70vh;
-  max-height: 70vh;
-  overflow: hidden;
+  max-height: 90vh; 
+  overflow-y: scroll;
 }
 .posteditorinner {
-  overflow-y: scroll;
-  overflow-x: hidden;
   height: 100%;
   padding-right: 30px;
 }
@@ -18,9 +16,10 @@
   align-items: flex-start;
   flex-direction: column;
   grid-gap: 20px;
+  resize: vertical;
 }
 .posteditorcont .coverimgplace {
-  width: 95%;
+  width: 100%;
   height: 150px;
   background-position: center;
   background-size: cover;
@@ -35,6 +34,7 @@
   font-weight: 600;
   resize: none;
   min-height: 50px;
+  background: none;
 }
 .posteditorcont .titleinput::placeholder {
   font-size: 45px;
@@ -46,6 +46,7 @@
   font-size: 16px;
   width: 100%;
   resize: none;
+  background: none;
 }
 .posteditorcont .posttextcontent::placeholder {
   font-size: 16px;
@@ -61,6 +62,7 @@
   font-weight: 600;
   font-size: 15px;
   color: var(--color);
+  background: none;
 }
 .posteditorcont .tagsinput::before {
   content: '#';

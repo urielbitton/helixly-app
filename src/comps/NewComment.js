@@ -15,6 +15,7 @@ export default function NewComment(props) {
 
   function postComment() {
     let commentObj = {
+      id: db.collection('posts').doc().id,
       authorid: user.uid,
       authorname: user.displayName,
       authorpic: user.photoURL,

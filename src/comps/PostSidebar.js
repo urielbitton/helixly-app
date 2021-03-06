@@ -8,16 +8,10 @@ import {db} from './Fire'
 
 export default function PostSidebar(props) {
 
-  const {comments, favlist, saves, authorname, authorid, authorimg} = props.props
-  const [authorUser, setAuthorUser] = useState([])
+  const {comments, favlist, saves, authorid} = props.props
+  const {firstname, lastname, profimg, bio, socials, website} = props.theuser
   const history = useHistory()
   const user = firebase.auth().currentUser
-
-  useEffect(() => {
-    db.collection('users').doc(authorid).onSnapshot(snap => {
-      setAuthorUser(snap.data().userinfo)
-    })
-  },[])
 
   return ( 
     <div className="postsidebar"> 
@@ -42,8 +36,8 @@ export default function PostSidebar(props) {
         </div>
       </div> 
       <div className="postauthorcont">
-        <h6 className="authorcont" onClick={() => history.push(`/profile/${authorid}`)}><img src={authorimg} alt=""/><span>{authorname}</span></h6>
-        <p>{authorUser.bio}</p>
+        <h6 className="authorcont" onClick={() => history.push(`/profile/${authorid}`)}><img src={profimg} alt=""/><span>{firstname} {lastname}</span></h6>
+        <p>{bio}</p>
         <div className="authorbtns">
           <AppButton title="Follow" size={14} icon="far fa-plus" bg="#e6e6e6" />
           <AppButton title="Message" size={14} icon="far fa-paper-plane" bg="#e6e6e6"/>
@@ -51,7 +45,7 @@ export default function PostSidebar(props) {
         <br/>
         <button onClick={() => history.push(`/profile/${authorid}`)}>View Profile</button>
         <hr />
-        <h6 className="weblink"><i class="far fa-link"></i><a href={`https://${authorUser.website}`} target="_blank" rel="noreferrer">{authorUser.website}</a></h6>
+        <h6 className="weblink"><i class="far fa-link"></i><a href={`https://${website}`} target="_blank" rel="noreferrer">{website}</a></h6>
       </div>
     </div>
   )

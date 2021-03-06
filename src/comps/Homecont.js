@@ -12,14 +12,14 @@ import Profile from './Profile'
 
 export default function Homecont() {
 
-  const {posts, allusers} = useContext(StoreContext) 
+  const {posts, allUsers} = useContext(StoreContext) 
 
   const postpage = posts && posts.map(el => {
     return <Route path={`/posts/${el.id}`}>
       <PostPage el={el} />
     </Route>
   }) 
-  const profilepage = allusers && allusers.map(el => {
+  const profilepage = allUsers && allUsers.map(el => {
     return <Route path={`/profile/${el.userinfo.uid}`}>
       <Profile el={el.userinfo} />
     </Route>

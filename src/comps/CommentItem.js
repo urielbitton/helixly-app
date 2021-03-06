@@ -1,20 +1,63 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './styles/CommentItem.css'
 import StampToDate from './StampToDate'
 import AppButton from './AppButton'
 import NestedCommentItem from './NestedCommentItem'
-import { Link } from 'react-router-dom'
 import NewComment from './NewComment'
 import LikeBtn from './LikeBtn'
+import CommentsOpts from './CommentsOpts'
+import {db} from './Fire'
+import firebase from 'firebase'
+import { StoreContext } from './StoreContext'
 
 export default function CommentItem(props) {
 
-  const {authorid, authorname, authorpic, text, dateadded, favlist, comments} = props.el
+  const {posts} = useContext(StoreContext)
+  const {id, authorid, authorname, authorpic, text, dateadded, favlist, comments} = props.el
+  const {allcomments} = props
   const [showReply, setShowReply] = useState(false)
- 
+  const [editing, setEditing] = useState(false)
+  const [newText, setNewText] = useState(text)
+  const textRef = useRef()
+  const user = firebase.auth().currentUser
+  
   const nestedcommentsrow = comments && comments.map(el => {
-    return <NestedCommentItem el={el} />
+    return <NestedCommentItem el={el} allcomments={comments} />
   })
+  function saveComment() {
+    let commentObj = {
+      id,
+      authorid,
+      authorname,
+      authorpic,
+      favlist,
+      text: newText,
+      dateadded,
+      comments
+    }  
+    allcomments && allcomments.filter(x => x.id===id).forEach(el => {
+      let itemindex = allcomments.indexOf(el)
+      allcomments[itemindex] = commentObj 
+    })
+    db.collection('posts').doc('articles').update({
+      allposts: posts
+    })
+  }
+  function deleteComment() {
+    allcomments && allcomments.filter(x => x.id===id).forEach(el => {
+      let itemindex = allcomments.indexOf(el)
+      allcomments.splice(itemindex,1)
+    }) 
+    db.collection('posts').doc('articles').update({
+      allposts: posts
+    })
+  }
+
+  useEffect(() => {
+    textRef.current.focus()
+    setNewText(text)
+  },[editing])
 
   return (
     <div className="commentitem">
@@ -23,12 +66,28 @@ export default function CommentItem(props) {
       </div>
       <div className="right">  
         <div className="commentbody">
-          <h5><Link to="">{authorname}</Link><span>•</span><span>{StampToDate(dateadded)}</span><i className="far fa-ellipsis-h"></i></h5>
-          <p>{text}</p>
+          <h5>
+            <Link to="">{authorname}</Link>
+            <span>•</span>
+            <span>{StampToDate(dateadded)}</span>
+            <CommentsOpts editing={editing} setEditing={setEditing} editAccess={authorid===user.uid} deleteComment={deleteComment}/>
+          </h5>
+          <textarea 
+            ref={textRef} 
+            disabled={editing?null:'disabled'} 
+            className={editing?"commenttextarea comment_textarea_editing":"commenttextarea"}
+            value={editing?newText:text}
+            onChange={(e) => setNewText(e.target.value)}
+            >
+            {text}
+          </textarea>
         </div>
-        <div className="commentactions">
+        <div className="commentactions" style={{display:editing?"none":""}}>
           <LikeBtn favlist={favlist} comment={props.el} likeaction="comment" />
-          <AppButton title={!showReply?"reply":'dismiss'} icon={!showReply?"fal fa-comment":"fal fa-comment-slash"} onClick={() => setShowReply(prev => !prev)}/>
+          <AppButton title={!showReply?"Reply":'Dismiss'} icon={!showReply?"fal fa-comment":"fal fa-comment-slash"} onClick={() => setShowReply(prev => !prev)}/>
+        </div>
+        <div className="editingactions" style={{display: editing?"":"none"}}>
+          <AppButton title="Save" icon="fal fa-save" onClick={() => {saveComment();setEditing(prev => !prev)}}/>
         </div>
         <NewComment comments={comments} show={showReply?true:false} setShowReply={setShowReply}/>
         {

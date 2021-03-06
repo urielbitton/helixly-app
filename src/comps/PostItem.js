@@ -6,11 +6,13 @@ import {StoreContext} from './StoreContext'
 import LikeBtn from './LikeBtn'
 import BookmarkBtn from './BookmarkBtn'
 import StampToDate from './StampToDate'
+import { db } from './Fire'
 
 export default function PostItem(props) {
 
   const {setCommentsScroll} = useContext(StoreContext)
-  const {id, title, cover, content, tags, category, authorid, authorimg, authorname, datecreated, comments, favlist, saves} = props.el
+  const {id, title, cover, content, tags, category, author, authorid, datecreated, comments, favlist, saves} = props.el
+  const [theUser, setTheUser] = useState([])
   const history = useHistory()  
 
   function shortenMsgs(text,num) {
@@ -22,10 +24,15 @@ export default function PostItem(props) {
       return text
     }
   } 
+  useEffect(() => {
+    author.onSnapshot(snap => {
+      setTheUser(snap.data().userinfo) 
+    })
+  },[])
 
   return (
     <div className="postitemcont">
-      <div className="covercont">
+      <div className="covercont"> 
         <img src={cover} alt="" onClick={() => history.push(`/posts/${id}`)}/>
       </div>
       <div className="infocont">
@@ -35,8 +42,8 @@ export default function PostItem(props) {
         </div>
         <div className="elementscont">
           <div className="authorcont">
-            <img src={authorimg} alt=""/>  
-            <h6 onClick={() => history.push(`/profile/${authorid}`)}><span>{authorname}</span><small>{StampToDate(datecreated)}</small></h6>
+            <img src={theUser.profimg} alt=""/>  
+            <h6 onClick={() => history.push(`/profile/${authorid}`)}><span>{theUser.firstname} {theUser.lastname}</span><small>{StampToDate(datecreated)}</small></h6>
           </div>
           <div className="actionscont">
             <LikeBtn favlist={favlist} post={props.el} likeaction="post"/>

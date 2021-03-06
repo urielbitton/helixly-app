@@ -1,4 +1,4 @@
-import React, {useState, useContext, useRef, useEffect} from 'react'
+import React, {useContext, useRef, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import AppButton from './AppButton'
 import './styles/ArticleContent.css'
@@ -11,22 +11,22 @@ import firebase from 'firebase'
 export default function ArticleContent(props) {
 
   const {setEditData, setEditMode, commentsScroll, setCommentsScroll} = useContext(StoreContext)
-  const {id, title, cover, content, tags, authorname, authorid, authorimg, datecreated, comments, minread} = props.props
-  const [userData, setUserData] = useState([])
+  const {title, cover, content, tags, authorid, datecreated, comments, minread, favlist, saves} = props.props
+  const {firstname, lastname, profimg} = props.theuser
   const history = useHistory()
   let commentsRef = useRef(null)
   const user = firebase.auth().currentUser
-
+ 
   const commentsrow = comments && comments.slice(0).reverse().map(el => {
-    return <CommentItem el={el} />
+    return <CommentItem el={el} allcomments={comments} />
   })
   
   useEffect(() => {
-    commentsScroll&&commentsRef.current.scrollIntoView()
+    commentsScroll&&commentsRef.current.scrollIntoView() 
     return() => {
       setCommentsScroll(false)
     } 
-  },[])
+  },[user])
 
   return (
     <div className="articlecontent">
@@ -34,11 +34,11 @@ export default function ArticleContent(props) {
         <img src={cover} alt="" />
         <h1>{title}</h1> 
         <div className="metadatacont">
-          <img src={authorimg} alt=""/>
-          <h6>{authorname}</h6>
+          <img src={profimg} alt=""/>
+          <h6>{firstname} {lastname}</h6>
           <h6><span>{tags[0]}</span></h6>
           <h6><span>{StampToDate(datecreated)}</span></h6>
-          <h6><span>{minread} minute read</span></h6>
+          <h6><span>{minread} min. read</span></h6>
           {
             user.uid===authorid&&
             <AppButton title="Edit" icon="fal fa-pen" onClick={() => {setEditData(props.props);history.push('/newpost');setEditMode(true)}}/>

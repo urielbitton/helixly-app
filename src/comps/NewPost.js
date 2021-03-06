@@ -7,7 +7,7 @@ import {StoreContext} from './StoreContext'
 import {db} from './Fire'
 import firebase from 'firebase'
 
-export default function NewPost(props) {
+export default function NewPost(props) { 
 
   const {posts, editMode, editData, setEditData} = useContext(StoreContext)
   const [postMode, setPostMode] = useState('edit')
@@ -15,21 +15,21 @@ export default function NewPost(props) {
   const [tags, setTags] = useState(editData.tags)
   const [content, setContent] = useState(editData.content)
   const [cover, setCover] = useState(editData.cover)
+  const [minread, setMinread] = useState(editData.minread)
   const history = useHistory()
   const user = firebase.auth().currentUser
 
   function publishPost() {
-    if(title.length && content.length) {
+    if(title.length && content.length && tags.length) {
       let postsObj = {
+        author: db.collection('users').doc(user.uid),
         id: db.collection("posts").doc().id,
         title,
         cover,
         content, 
         tags: tags.split(','),
         category: ['General'],
-        authorname: user.displayName,
         authorid: user.uid,
-        authorimg: user.photoURL,
         datecreated: firebase.firestore.Timestamp.now(),
         comments: [],
         minread: 3, 
@@ -42,23 +42,22 @@ export default function NewPost(props) {
       history.push('/')
     }
     else {
-      alert('Add a title and body text to publish post.')
+      alert('Add a title, a body text, and at least one tag to publish post.')
     }
   }
   function savePost() {
-    if(title.length && content.length) {
+    if(editData.title.length && editData.content.length) {
       setEditData({
+        author: db.collection('users').doc(user.uid),
         id: editData.id,
         title, 
-        cover: editData.cover,
-        content, 
-        tags: editData.tags,
-        author: 'Uriel Bitton',
-        profpic: 'https://i.imgur.com/L76EEqM.jpg',
-        datecreated: firebase.firestore.Timestamp.now(),
+        cover,
+        content,  
+        tags,
+        datecreated: editData.datecreated,
         comments: [], 
-        minread: editData.minread, 
-        favorites: editData.favorites,
+        minread: 5, 
+        favlist: editData.favlist,
         saves: editData.saves
       })
       posts && posts
@@ -73,7 +72,7 @@ export default function NewPost(props) {
       history.push(`/posts/${editData.id}`)
     }
     else {
-      alert('Add a title and body text to save post.')
+      alert('Add a title, a body text and at least one tag to save post.')
     }
   }
 
@@ -93,6 +92,8 @@ export default function NewPost(props) {
           setContent={setContent} 
           cover={cover} 
           setCover={setCover}
+          minread={minread}
+          setMinread={setMinread}
         />
         <div className="postactions">
           <button onClick={() => !editMode?publishPost():savePost()}>{!editMode?'Publish':'Save Post'}</button>

@@ -26,7 +26,7 @@ export default function App() {
     setPasswordError('')
   }
  
-  const handleLogin = () => {
+  const handleLogin = () => { 
     clearErrors()
     firebase.auth().signInWithEmailAndPassword(email, password)
     .catch(err => {

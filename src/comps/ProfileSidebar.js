@@ -2,12 +2,14 @@ import React, { useContext } from 'react'
 import AppButton from './AppButton'
 import {StoreContext} from './StoreContext'
 import './styles/ProfileSidebar.css'
+import firebase from 'firebase'
 
 export default function ProfileSidebar(props) {
 
   const {posts} = useContext(StoreContext)
   const {profimg, firstname, lastname, jobtitle, bio, followers, socials, uid, website} = props.el
   const postsnum = posts.filter(x => x.authorid===uid).length 
+  const user = firebase.auth().currentUser
  
   return (
     <div className="profilesidebar">
@@ -24,7 +26,11 @@ export default function ProfileSidebar(props) {
       <div className="biocont">
         <p>{bio}</p>
       </div>
-      <AppButton title="Follow" icon="fal fa-user-plus" bg="var(--color)" color="#fff" iconcolor="#fff" size={14}/>
+      { 
+        user.uid===uid?
+        <AppButton title="Edit Profile" icon="fal fa-user-edit" bg="var(--color)" color="#fff" iconcolor="#fff" size={14}/>
+        :<AppButton title="Follow" icon="fal fa-user-plus" bg="var(--color)" color="#fff" iconcolor="#fff" size={14}/>
+      }
       <div className="socialscont">
         <h5> <i className='fab fa-facebook-f'></i><a href={socials.facebook} target="_blank" rel="noreferrer">Facebook</a></h5>
         <h5> <i className='fab fa-twitter'></i><a href={socials.twitter} target="_blank" rel="noreferrer">Twitter</a></h5>

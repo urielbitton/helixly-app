@@ -3,11 +3,11 @@ import './styles/AppButton.css'
 
 export default function AppButton(props) {
 
-  const {title, icon, onClick, size=11, color="#333", iconcolor='#333', bg="#f2f5f8", className=""} = props
+  const {title, icon, onClick, size=11, color="#333", iconcolor='#333', bg="#f2f5f8", className="", fontWeight} = props
 
   return (
     <div className={`${className} appbutton`} style={{background:bg}} onClick={() => onClick&&onClick()}>
-      <h6 style={{fontSize:size,color:color}}>
+      <h6 style={{fontSize:size,color,fontWeight}}>
         {icon&&<i className={icon} style={{color:iconcolor, margin:title?"":"0"}}></i>}
         {title}
       </h6>

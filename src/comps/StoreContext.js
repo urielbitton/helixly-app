@@ -9,9 +9,9 @@ const StoreContextProvider = (props) => {
   const user = firebase.auth().currentUser
   const [posts, setPosts] = useState([])
   const [myuser, setMyUser] = useState([])
-  const [allusers, setAllUsers] = useState([])
+  const [allUsers, setAllUsers] = useState([])
   const [filters, setFilters] = useState([
-    {
+    { 
       name: 'All Posts',
       icon: 'fal fa-circle',
     },
@@ -48,17 +48,17 @@ const StoreContextProvider = (props) => {
     user&&db.collection('users').doc(user.uid).onSnapshot(snap => {
       const userdata = snap.data()
       setMyUser(userdata.userinfo)
-    })
-    user&&db.collection('users').onSnapshot(snap => {
+    }) 
+    db.collection('users').onSnapshot(snap => {
       const userlist = []
       snap.forEach(el => { userlist.push(el.data()) })
       setAllUsers(userlist)   
-    })   
+    })
   },[user])
 
   return (
     <StoreContext.Provider value={{
-      posts, setPosts, myuser, setMyUser, allusers, setAllUsers, filters, setFilters, activeFilter, setActiveFilter, editData, setEditData,
+      posts, setPosts, myuser, setMyUser, allUsers, setAllUsers, filters, setFilters, activeFilter, setActiveFilter, editData, setEditData,
       editMode, setEditMode, commentsScroll, setCommentsScroll
     }}>
       {props.children}
