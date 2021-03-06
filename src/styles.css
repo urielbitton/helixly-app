@@ -13,6 +13,7 @@ html, body {
   --gray: #eaeef1;
   --grad: linear-gradient(90deg, rgba(249,119,143,1) 0%, rgb(254, 172, 140) 100%);
   --shadow: 0 0 6px rgba(0,0,0,0.1);
+  --red: rgb(247, 0, 95);
 }  
  
 .grid {
@@ -77,6 +78,10 @@ button:hover {
 } 
 button i {
   margin-right: 10px;
+}
+button.redbg {
+  background: var(--red);
+  border-color: var(--red);
 }
 a { 
   text-decoration: none;

@@ -8,6 +8,7 @@
   cursor: pointer;
   transition: all 0.2s;
   user-select: none;
+  font-weight: 600;
 }
 .appbutton:active {
   transform: scale(0.97);

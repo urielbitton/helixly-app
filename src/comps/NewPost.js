@@ -75,6 +75,21 @@ export default function NewPost(props) {
       alert('Add a title, a body text and at least one tag to save post.')
     }
   }
+  function deletePost() {
+    let confirm = window.confirm('Are you sure you want to delete this post?')
+    if(confirm) {
+      posts && posts
+      .filter(x => x.id===editData.id)
+      .forEach(el => {
+        let itemindex = posts.indexOf(el)
+        posts.splice(itemindex,1)
+      })
+      db.collection('posts').doc('articles').update({
+        allposts: posts
+      })
+      history.push('/')
+    }
+  }
 
   return (
     <div className="newpostpage">
@@ -98,6 +113,7 @@ export default function NewPost(props) {
         <div className="postactions">
           <button onClick={() => !editMode?publishPost():savePost()}>{!editMode?'Publish':'Save Post'}</button>
           <button>Save Draft</button>
+          {editMode&&<button className="redbg" onClick={() => deletePost()}>Delete Post</button>}
         </div>
       </div> 
       <div className="postguidescont hidescroll">

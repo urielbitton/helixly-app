@@ -74,6 +74,7 @@
   width: 20px;
   margin-right: 15px;
   color: #aaa;
+  transition: all 0.2s;
 }
 .profilesidebar .socialscont h5 {
   font-size: 14px;
@@ -83,6 +84,7 @@
 .profilesidebar .socialscont h5 a {
   color: #999;
   font-weight: 500;
+  transition: all 0.2s;
 }
 .profilesidebar .socialscont h5:hover a, .profilesidebar .socialscont h5:hover i {
   color: var(--color)

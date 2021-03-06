@@ -11,6 +11,13 @@ export default function ProfileSidebar(props) {
   const postsnum = posts.filter(x => x.authorid===uid).length 
   const user = firebase.auth().currentUser
  
+  const socialsrow = socials && socials.map(el => {
+    return <h5>
+      <i className={el.icon}></i>
+      <a href={`https://${el.link}`} target="_blank" rel="noreferrer">{el.name}</a>
+    </h5>
+  })
+
   return (
     <div className="profilesidebar">
       <div className="profcont" style={{backgroundImage: `url(${profimg})`}}></div>
@@ -32,11 +39,8 @@ export default function ProfileSidebar(props) {
         :<AppButton title="Follow" icon="fal fa-user-plus" bg="var(--color)" color="#fff" iconcolor="#fff" size={14}/>
       }
       <div className="socialscont">
-        <h5> <i className='fab fa-facebook-f'></i><a href={socials.facebook} target="_blank" rel="noreferrer">Facebook</a></h5>
-        <h5> <i className='fab fa-twitter'></i><a href={socials.twitter} target="_blank" rel="noreferrer">Twitter</a></h5>
-        <h5> <i className='fab fa-instagram'></i><a href={socials.instagram} target="_blank" rel="noreferrer">Instagram</a></h5>
-        <h5> <i className='fab fa-linkedin-in'></i><a href={socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></h5>
-        <h5> <i className="far fa-link"></i><a href={`https://${website}`} target="_blank" rel="noreferrer">{website}</a></h5>
+        {socialsrow}
+        <h5><i className='far fa-link'></i><a href={`https://${website}`} target="_blank" rel="noreferrer">{website}</a></h5>
       </div>
     </div> 
   )

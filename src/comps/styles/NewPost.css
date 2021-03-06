@@ -28,9 +28,9 @@
   grid-gap: 15px;
 }
 .newpostpage .postactions button {
-  width: 100px;
+  min-width: 100px;
 }
-.newpostpage .postactions button:last-child {
+.newpostpage .postactions button:nth-of-type(2) {
   background: #ddd;
   color: #333;
   border-color: #ddd;

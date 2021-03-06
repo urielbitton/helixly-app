@@ -1,0 +1,29 @@
+.profiledesigns {
+
+}
+.profiledesignsheader {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  grid-gap: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.profiledesignsheader a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #aaa;
+  padding: 10px;
+  width: 120px;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.profiledesignsheader a i {
+  margin-right: 5px;
+}
+.profiledesignsheader .activedesignslink {
+  color: #333;
+  border-color: #eee;
+  font-weight: 700;
+}

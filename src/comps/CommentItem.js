@@ -45,13 +45,16 @@ export default function CommentItem(props) {
     })
   }
   function deleteComment() {
-    allcomments && allcomments.filter(x => x.id===id).forEach(el => {
-      let itemindex = allcomments.indexOf(el)
-      allcomments.splice(itemindex,1)
-    }) 
-    db.collection('posts').doc('articles').update({
-      allposts: posts
-    })
+    let confirm = window.confirm('Are you sure you want to delete this comment?')
+    if(confirm) {
+      allcomments && allcomments.filter(x => x.id===id).forEach(el => {
+        let itemindex = allcomments.indexOf(el)
+        allcomments.splice(itemindex,1)
+      }) 
+      db.collection('posts').doc('articles').update({
+        allposts: posts
+      })
+    } 
   }
 
   useEffect(() => {

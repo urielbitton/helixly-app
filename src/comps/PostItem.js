@@ -6,7 +6,6 @@ import {StoreContext} from './StoreContext'
 import LikeBtn from './LikeBtn'
 import BookmarkBtn from './BookmarkBtn'
 import StampToDate from './StampToDate'
-import { db } from './Fire'
 
 export default function PostItem(props) {
 

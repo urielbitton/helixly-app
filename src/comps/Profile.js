@@ -10,7 +10,7 @@ export default function Profile(props) {
     <div className="profilepage">
       <ProfileSidebar el={props.el} />
       <ProfileContent el={props.el} />
-      <ProfileRightSidebar />
+      <ProfileRightSidebar el={props.el} />
     </div>
   )
 }
