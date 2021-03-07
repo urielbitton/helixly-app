@@ -1,43 +1,60 @@
 import React, {useEffect, useState} from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom'
 import './styles/ProfileDesigns.css'
 import axios from 'axios'
+import DribbbleComp from './DribbbleComp'
+import PinterestComp from './PinterestComp'
 
 export default function ProfileDesigns(props) {
 
-  const {uid, pinterestUsername} = props.el
-  const [pinterest, setPinterest] = useState([])
-
-  const behancecards = pinterest && pinterest.slice(0,6).map(el =>  {
-    return <div>
-
-    </div>
-  })
-
+  const {uid, firstname, lastname, dribbble_access_token, pinterestUsername} = props.el
+  const [dribbble, setDribbble] = useState([])
+  const [pinterest, setPinterest] = useState([]) 
+ 
   useEffect(() => { 
     axios({ 
       method: 'get',
-      url: ``,
+      url: `https://api.dribbble.com/v2/user/shots?access_token=${dribbble_access_token}`,
     }).then((response) => {
-      console.log(response.data)   
+      setDribbble(response.data) 
+    })
+    axios({ 
+      method: 'get',
+      url: `https://api.pinterest.com/v3/pidgets/users/${pinterestUsername}/pins/`,
+    }).then((response) => {
+      setPinterest(response.data.data)   
     }) 
   },[])
 
   return (
     <div className="profiledesigns">
       <div className="profiledesignsheader">
+        <NavLink exact to={`/profile/${uid}/designs/`} activeClassName="activedesignslink">
+          <i className="fab fa-dribbble"></i>
+          <span>Dribbble</span>
+        </NavLink>
         <NavLink to={`/profile/${uid}/designs/pinterest`} activeClassName="activedesignslink">
           <i className="fab fa-pinterest-p"></i>
           <span>Pinterest</span>
         </NavLink> 
-        <NavLink to={`/profile/${uid}/designs/dribbble`} activeClassName="activedesignslink">
-          <i className="fab fa-dribbble"></i>
-          <span>Dribbble</span>
-        </NavLink>
+        <NavLink to={`/profile/${uid}/designs/instagram`} activeClassName="activedesignslink">
+          <i className="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </NavLink> 
       </div>
 
       <div className="profiledesignscontent">
-        {behancecards}
+        <Switch>
+          <Route exact path={`/profile/${uid}/designs/`}>
+            <DribbbleComp apiname="Dribbble" api={dribbble} userinfo={props.el} />
+          </Route>
+          <Route path={`/profile/${uid}/designs/pinterest`}>
+            <PinterestComp apiname="Pinterest" api={pinterest} userinfo={props.el} />
+          </Route>
+          <Route path={`/profile/${uid}/designs/instagram`}>
+            Coming Soon
+          </Route>
+        </Switch>
       </div>
 
     </div>

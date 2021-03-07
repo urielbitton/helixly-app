@@ -1,0 +1,35 @@
+.designscomphead {
+  padding: 10px 15px;
+  background: #f5f5f5;
+  width: 94%;
+  border-radius: 10px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.designscomphead h5 {
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+.designscomphead h5 span {
+  font-weight: 600;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+.designscomphead h5 span img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.designscompcontent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  grid-gap: 20px;
+}

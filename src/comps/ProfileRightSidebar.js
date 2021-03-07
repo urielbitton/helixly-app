@@ -36,7 +36,6 @@ export default function ProfileRightSidebar(props) {
       url: `https://api.github.com/users/${githubUsername}/repos`,
     }).then((response) => {
       setRepos(response.data)
-      console.log(response.data) 
     }) 
   },[])
 
