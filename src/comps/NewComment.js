@@ -15,10 +15,9 @@ export default function NewComment(props) {
 
   function postComment() {
     let commentObj = {
+      author: db.collection('users').doc(user.uid),
       id: db.collection('posts').doc().id,
       authorid: user.uid,
-      authorname: user.displayName,
-      authorpic: user.photoURL,
       favlist: [],
       text: commentText,
       dateadded: firebase.firestore.Timestamp.now(),

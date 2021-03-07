@@ -14,8 +14,9 @@ import { StoreContext } from './StoreContext'
 export default function CommentItem(props) {
 
   const {posts} = useContext(StoreContext)
-  const {id, authorid, authorname, authorpic, text, dateadded, favlist, comments} = props.el
+  const {id, author, authorid, text, dateadded, favlist, comments} = props.el
   const {allcomments} = props
+  const [theUser, setTheUser] = useState([])
   const [showReply, setShowReply] = useState(false)
   const [editing, setEditing] = useState(false)
   const [newText, setNewText] = useState(text)
@@ -27,10 +28,9 @@ export default function CommentItem(props) {
   })
   function saveComment() {
     let commentObj = {
+      author: db.collection('users').doc(user.uid),
       id,
       authorid,
-      authorname,
-      authorpic,
       favlist,
       text: newText,
       dateadded,
@@ -58,6 +58,9 @@ export default function CommentItem(props) {
   }
 
   useEffect(() => {
+    author.onSnapshot(snap => {
+      setTheUser(snap.data().userinfo) 
+    })
     textRef.current.focus()
     setNewText(text)
   },[editing])
@@ -65,12 +68,12 @@ export default function CommentItem(props) {
   return (
     <div className="commentitem">
       <div className="left">
-        <img src={authorpic} alt=""/>
+        <img src={theUser.profimg} alt=""/>
       </div>
       <div className="right">  
         <div className="commentbody">
           <h5>
-            <Link to="">{authorname}</Link>
+            <Link to="">{theUser.firstname} {theUser.lastname}</Link>
             <span>•</span>
             <span>{StampToDate(dateadded)}</span>
             <CommentsOpts editing={editing} setEditing={setEditing} editAccess={authorid===user.uid} deleteComment={deleteComment}/>
