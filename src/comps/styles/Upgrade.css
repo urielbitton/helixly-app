@@ -32,7 +32,7 @@
   align-items: flex-start;
   top: -120px;
   grid-gap: 30px;
-  margin-bottom: -70px;
+  margin-bottom: -30px;
 }
 .paymentscont {
   width: 100%;
@@ -69,21 +69,41 @@
 .paymentscont .right img {
   width: 380px;
 }
+.paypalcont {
+  width: 300px;
+}
+.paymentmessages {
+  width: 500px;
+  margin-top: 30px;
+}
+.paymentmessages p {
+  color: var(--graytxt);
+}
+.paymentmessages p a {
+  font-size: 13px;
+  color: var(--color);
+  margin-right: 20px;
+}
+.paymentmessages p a i {
+  margin-right: 5px;
+}
 .qacont {
   text-align: center;
 }
 .qacont h3 {
   font-size: 30px;
-  color: #555;
+  color: var(--graytxt);
 }
 .qacont h6 {
   color: var(--graytxt);
   font-size: 14px;
   margin-top: 5px;
   margin-bottom: 30px;
+  opacity: 0.7;
+  font-weight: 500;
 }
 .qacontinner {
-  margin-top: 50px;
+  margin-top: 80px;
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
@@ -93,7 +113,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  grid-gap: 20px;
+  flex-wrap: wrap;
+  grid-gap: 10px;
   width: 200px;
 }
 .qacontinner .iconholder {
@@ -105,6 +126,7 @@
   align-items: center;
   box-shadow: 0 0 13px rgba(0,0,0,0.14);
   background: var(--pale);
+  margin-bottom: 25px;
 }
 .qacontinner .iconholder i {
   font-size: 30px;

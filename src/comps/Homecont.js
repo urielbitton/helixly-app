@@ -25,7 +25,7 @@ export default function Homecont() {
       <Profile el={el.userinfo} />
     </Route>
   })
-
+  console.log('hey')
   return (
     <div className="homecont"> 
       <div className="grid">
