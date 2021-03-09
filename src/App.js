@@ -16,7 +16,7 @@ export default function App() {
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [hasAccount, setHasAccount] = useState(true)
-
+  
   const clearInputs = () => {
     setEmail('')
     setPassword('')
@@ -79,6 +79,7 @@ export default function App() {
           profimg: "https://i.imgur.com/1OKoctC.jpg",
           bio: '',
           followers: [],
+          skills: ['Web Development','App Development','UI/UX','Design'],
           socials: {
             facebook: '',
             twitter: '',

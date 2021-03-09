@@ -13,8 +13,8 @@ import Upgrade from './Upgrade'
 
 export default function Homecont() {
 
-  const {posts, allUsers} = useContext(StoreContext) 
-
+  const {posts, allUsers} = useContext(StoreContext)  
+  
   const postpage = posts && posts.map(el => {
     return <Route path={`/posts/${el.id}`}>
       <PostPage el={el} />
@@ -25,7 +25,7 @@ export default function Homecont() {
       <Profile el={el.userinfo} />
     </Route>
   })
-  console.log('hey')
+
   return (
     <div className="homecont"> 
       <div className="grid">

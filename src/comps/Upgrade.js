@@ -13,7 +13,6 @@ export default function Upgrade() {
   const [showPayments, setShowPayments] = useState(false)
   const [successPaid, setSuccessPaid] = useState(false)
   const [failPaid, setFailPaid] = useState(false)
-  const [payDetails, setPayDetails] = useState({})
   let paysRef = useRef()
   const clientid = "ASTQpkv9Y3mQ5-YBd20q0jMb9-SJr_TvUl_nhXu5h3C7xl0wumYgdqpSYIL6Vd__56oB7Slag0n2HA_r"
   const user = firebase.auth().currentUser
@@ -22,17 +21,17 @@ export default function Upgrade() {
     return <PricePlan el={el} setShowPayments={setShowPayments}/>
   })
 
-  function SendProEmail() { 
-    const templateid = 'template_tejvl19'
+  function SendProEmail(details) { 
+    const templateid = 'template_tejvl19' 
     sendFeedback(templateid, {
-      to_name:payDetails.payer.name.given_name+' '+payDetails.payer.name.surname, 
-      to_email:payDetails.payer.email_address,
-      payer_id: payDetails.payer.payer_id,
-      total_amount: payDetails.purchase_units[0].amount.value,
-      payee_email_address: payDetails.purchase_units[0].payee.email_address,
-      merchant_id: payDetails.purchase_units[0].payee.merchant_id,
-      transaction_date: payDetails.create_time
-    })
+      to_name:details.payer.name.given_name+' '+details.payer.name.surname, 
+      to_email:user.email, 
+      payer_id: details.payer.payer_id,
+      total_amount: details.purchase_units[0].amount.value,
+      payee_email_address: details.purchase_units[0].payee.email_address,
+      merchant_id: details.purchase_units[0].payee.merchant_id,
+      transaction_date: details.create_time
+    }) 
   }
   function sendFeedback (templateid, variables) { 
     window.emailjs.send(
@@ -45,7 +44,7 @@ export default function Upgrade() {
   
     })
   }
-  
+
   useEffect(() => {
     paysRef.current.scrollIntoView()
   },[showPayments])
@@ -53,7 +52,7 @@ export default function Upgrade() {
   useEffect(() => {
     myuser.membership = 'pro'
     db.collection('users').doc(user.uid).update({
-      userinfo: myuser
+      userinfo: myuser   
     }) 
   },[successPaid])
 
@@ -74,8 +73,8 @@ export default function Upgrade() {
           <h6>Our current payment options include only paypal for now.</h6>
           <div className="paypalcont">
             <PayPalButton
-              amount="0.01"
-              onSuccess={(details, data) =>  {setSuccessPaid(true);setPayDetails(details);SendProEmail();console.log(payDetails)}}
+              amount="0.01" 
+              onSuccess={(details, data) =>  {setSuccessPaid(true);SendProEmail(details);console.log(details)}}
               onError={() => setFailPaid(true)}
               options={{ clientId: clientid }}
             />
