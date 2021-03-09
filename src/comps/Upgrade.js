@@ -6,10 +6,10 @@ import { StoreContext } from './StoreContext'
 import './styles/Upgrade.css'
 import firebase from 'firebase'
 import {db} from './Fire'
-
+ 
 export default function Upgrade() {
 
-  const {pricePlans, myuser} = useContext(StoreContext)
+  const {pricePlans, myuser, setMyUser} = useContext(StoreContext)
   const [showPayments, setShowPayments] = useState(false)
   const [successPaid, setSuccessPaid] = useState(false)
   const [failPaid, setFailPaid] = useState(false)
@@ -44,18 +44,20 @@ export default function Upgrade() {
   
     })
   }
-
-  useEffect(() => {
+  
+  useEffect(() => { 
     paysRef.current.scrollIntoView()
   },[showPayments])
 
-  useEffect(() => {
-    myuser.membership = 'pro'
-    db.collection('users').doc(user.uid).update({
-      userinfo: myuser   
-    }) 
+  useEffect(() => {  
+    if(successPaid) {
+      myuser.membership = 'pro'
+      db.collection('users').doc(user.uid).update({
+        userinfo: myuser   
+      }) 
+    }
   },[successPaid])
-
+ 
   return (
     <div className="upgradepage">
       <div className="banner">
@@ -74,7 +76,7 @@ export default function Upgrade() {
           <div className="paypalcont">
             <PayPalButton
               amount="0.01" 
-              onSuccess={(details, data) =>  {setSuccessPaid(true);SendProEmail(details);console.log(details)}}
+              onSuccess={(details, data) =>  {setSuccessPaid(true);SendProEmail(details)}}
               onError={() => setFailPaid(true)}
               options={{ clientId: clientid }}
             />

@@ -79,7 +79,7 @@ export default function App() {
           profimg: "https://i.imgur.com/1OKoctC.jpg",
           bio: '',
           followers: [],
-          skills: ['Web Development','App Development','UI/UX','Design'],
+          skills: [],
           socials: {
             facebook: '',
             twitter: '',
