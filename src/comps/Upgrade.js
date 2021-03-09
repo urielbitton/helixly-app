@@ -25,6 +25,7 @@ export default function Upgrade() {
     const templateid = 'template_tejvl19' 
     sendFeedback(templateid, {
       to_name:details.payer.name.given_name+' '+details.payer.name.surname, 
+      to_user_name: user.displayName,
       to_email:user.email, 
       payer_id: details.payer.payer_id,
       total_amount: details.purchase_units[0].amount.value,

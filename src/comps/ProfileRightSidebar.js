@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './styles/ProfileRightSidebar.css'
 import axios from 'axios'
+import { StoreContext } from './StoreContext'
+import LockedContent from './LockedContent'
 
 export default function ProfileRightSidebar(props) {
 
+  const {myuser} = useContext(StoreContext)
   const {githubUsername} = props.el
   const [repos, setRepos] = useState([])
 
@@ -46,7 +49,10 @@ export default function ProfileRightSidebar(props) {
           <span>Github Repositories</span>
           <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer">View all</a>
         </h3>
-        {reposrow}
+        {
+          myuser.membership==='pro'?reposrow:
+          <LockedContent msg="Upgrade your to pro to add your Github repositories"/>
+        }
       </div>
     </div>
   )

@@ -1,0 +1,20 @@
+.lockedcontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-gap: 20px;
+  width: 100%;
+  margin: 50px 0;
+  text-align: center;
+}
+.lockedcontent i {
+  font-size: 30px;
+  color: var(--graytxt);
+}
+.lockedcontent h5 {
+  color: var(--graytxt);
+  font-weight: 400;
+  width: 250px;
+  font-size: 17px; 
+} 

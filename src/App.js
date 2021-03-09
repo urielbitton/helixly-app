@@ -78,14 +78,13 @@ export default function App() {
           country: "",
           profimg: "https://i.imgur.com/1OKoctC.jpg",
           bio: '',
+          coverimg: 'https://i.imgur.com/HSpD9Xs.jpg',
+          githubUsername: '',
+          dribble_access_token: '',
+          pinterestUsername: '',
           followers: [],
           skills: [],
-          socials: {
-            facebook: '',
-            twitter: '',
-            instagram: '',
-            linkedin: ''
-          },
+          socials: [],
           settings: {
             
           } 
