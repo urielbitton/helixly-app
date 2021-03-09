@@ -40,7 +40,7 @@
   grid-gap: 20px;
   font-size: 13px;
   padding: 10px;
-  color: #555;
+  color: var(--graytxt);
   cursor: pointer;
   border-radius: 15px;
   transition: all 0.3s;

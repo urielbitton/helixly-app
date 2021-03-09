@@ -1,0 +1,93 @@
+.priceplan {
+  width: 330px;
+  height: 520px;
+  box-shadow: 0 1px 25px rgba(0,0,0,0.1);
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+.priceplan .priceheader {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.priceplan .logo {
+  width: 40px;
+  margin-bottom: 20px;
+}
+.priceplan h3 {
+  font-weight: 400;
+  color: var(--graytxt);
+  margin-bottom: 7px;
+  font-size: 22px;
+}
+.priceplan h3 span {
+  font-weight: 800;
+}
+.priceplan h5 {
+  color: var(--graytxt);
+  opacity: 0.5;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.priceplan .featureitemcont {
+  width: 80%;
+}
+.priceplan .featureitem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid  #696e9323;
+}
+.priceplan .featureitem:first-child {
+  border-top: 1px solid  #696e9323;
+}
+.priceplan .featureitem h4 {
+  font-weight: 600;
+  color: var(--graytxt);
+  font-size: 14px;
+}
+.priceplan button {
+  padding: 15px;
+  width: 80%;
+  font-size: 14px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+.priceplan button.nonprobtn {
+  background: #eee;
+  border-color: #eee;
+  color: #555;
+  font-weight: 600;
+}
+.priceplan button i {
+  font-size: 16px;
+}
+.priceplan .featureitem h4 i {
+  color: var(--color);
+  margin-right: 10px;
+}
+.priceplan hr.border {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  background: var(--color);
+}
+.priceplan > small {
+  font-size: 11px;
+  color: var(--graytxt);
+  cursor: pointer;
+}
+.priceplan > small a {
+  color: var(--color);
+}

@@ -44,12 +44,13 @@ nav .profcont {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 130px;
+  width: 140px;
   cursor: pointer;
   transition: all 0.2s;
   cursor: pointer;
   padding: 5px;
   border-radius: 40px;
+  color: var(--graytxt);
 }
 nav .profcont:hover {
   background: #fff;
@@ -60,11 +61,11 @@ nav .profcont img {
   border-radius: 100%;
 }
 nav .profcont h6 {
-  color: #333;
   font-size: 12px;
 }
 nav .profcont i {
-  color: #777;
+  transform: scaleX(0.9);
+  transition: all 0.2s;
 }
 nav .toolbar {
   display: flex;
@@ -87,3 +88,46 @@ nav .toolbar .darkmodecont label {
   top: -11px;
   margin-left: 30px;
 }
+.profslidecont {
+  position: absolute;
+  top: 58px;
+  right: 0;
+  background: #fff;
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  transition: all 0.3s;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  color: var(--graytxt);
+}
+.profslidecont-open {
+  visibility: visible;
+  opacity: 1;
+  top: 48px;
+}
+.profslidecont a {
+  font-size: 12.5px;
+  padding: 10px 15px;
+  font-weight: 600;
+  transition: all 0.3s;
+  color: var(--graytxt);
+  opacity: 0.8;
+}
+.profslidecont a:hover {
+  background: var(--pale);
+  color: var(--color)
+}
+.profslidecont a i {
+  margin-right: 7px;
+}
+.profslidecont h6 {
+  padding: 10px;
+  font-weight: 800;
+  color: var(--graytxt);
+}
+

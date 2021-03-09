@@ -9,6 +9,7 @@ import './styles/Homecont.css'
 import { StoreContext } from './StoreContext'
 import PostPage from './PostPage'
 import Profile from './Profile'
+import Upgrade from './Upgrade'
 
 export default function Homecont() {
 
@@ -43,6 +44,9 @@ export default function Homecont() {
           </Route>
           <Route path="/settings">
             <Settings />
+          </Route>
+          <Route path="/upgrade">
+            <Upgrade />
           </Route>
           {postpage}
           {profilepage}

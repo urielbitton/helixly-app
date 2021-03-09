@@ -67,6 +67,8 @@ export default function App() {
           uid: user.uid,
           firstname: name.split(' ')[0],
           lastname: name.split(' ')[1],
+          fullname: name,
+          membership: 'free', 
           email: user.email,
           phone: "",
           city: "",

@@ -16,9 +16,6 @@
   color: var(--color);
   transform: scale(1)
 }
-.commentsoptscont:hover .optionswindow {
-  display: flex;
-}
 .commentsopts {
   transition: all 0.2s;
   color: #bbb;

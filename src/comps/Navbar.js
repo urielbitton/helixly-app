@@ -1,5 +1,5 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import {AppInput, AppSwitch} from './AppInputs'
 import './styles/Navbar.css'
 import firebase from 'firebase'
@@ -7,7 +7,14 @@ import firebase from 'firebase'
 export default function Navbar() {
 
   const user = firebase.auth().currentUser
+  const [openProf, setOpenProf] = useState(false)
   const history = useHistory()
+
+  useEffect(() => {
+    window.onclick = () => {
+      setOpenProf(false)
+    }
+  })
 
   return (
     <nav>
@@ -22,12 +29,20 @@ export default function Navbar() {
             <i className="fal fa-moon-stars"></i>
             <AppSwitch onChange={() => null}/>
           </div> 
-          <i className="fal fa-sign-out" onClick={() => firebase.auth().signOut()}></i>
         </div>
-        <div className="profcont">
+        <div className="profcont" onClick={(e) => {e.stopPropagation();setOpenProf(prev => !prev)}} style={{background:openProf&&'#fff'}}>
           <img src={user.photoURL} alt="" />
           <h6>{user.displayName}</h6>
-          <i className="fas fa-angle-down"></i> 
+          <i className="fas fa-th" style={{color:openProf&&'var(--color)'}}></i> 
+        </div>
+        <div className={openProf?'profslidecont profslidecont-open':'profslidecont'}>
+          <h6 onClick={(e) => e.stopPropagation()}>Account</h6>
+          <Link><i className="far fa-user"></i>My Account</Link>
+          <Link><i className="far fa-sliders-h"></i>Preferences</Link>
+          <Link><i className="far fa-heart"></i>My Favorites</Link>
+          <h6 onClick={(e) => e.stopPropagation()}>Actions</h6>
+          <Link to="/upgrade"><i className="far fa-unlock-alt"></i>Upgrade to Pro</Link>
+          <a href=" " onClick={() => firebase.auth().signOut()}><i className="far fa-sign-out"></i>Log Out</a>
         </div>
       </div>
       </div>

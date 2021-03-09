@@ -11,6 +11,7 @@ html, body {
   --hover: rgba(130, 20, 255,0.07); 
   --pale: #f2f5f8;
   --gray: #eaeef1;
+  --graytxt: #696e93;
   --grad: linear-gradient(90deg, rgba(249,119,143,1) 0%, rgb(254, 172, 140) 100%);
   --shadow: 0 0 6px rgba(0,0,0,0.1);
   --red: rgb(247, 0, 95);

@@ -1,21 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles/CommentsOpts.css'
 
 export default function CommentsOpts(props) {
 
   const {setEditing, editAccess, deleteComment} = props
+  const [open, setOpen] = useState(false)
 
-  function openOptions() {
-
+  function openOptions(e) {
+    e.stopPropagation()
   }  
+
+  useEffect(() => {
+    window.onclick = () => {
+      setOpen(false)
+    } 
+  },[open])
 
   return (
     <div className="commentsoptscont">
       <i  
         className="far fa-ellipsis-h commentsopts"
-        onClick={() => openOptions()}
+        onClick={(e) => {open?setOpen(false):setOpen(true);openOptions(e)}}
       ></i>
-      <div className="optionswindow">
+      <div className="optionswindow" style={{display: open&&'flex'}}>
         {
           editAccess&&
           <>

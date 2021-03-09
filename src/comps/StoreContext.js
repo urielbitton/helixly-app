@@ -40,6 +40,22 @@ const StoreContextProvider = (props) => {
   const [editData, setEditData] = useState({})
   const [editMode, setEditMode] = useState(false)
   const [commentsScroll, setCommentsScroll] = useState(false)
+  const [pricePlans] = useState([
+    {
+      title: 'Basic',
+      price: 'Free',
+      license: 'None',
+      features: ['Read free articles','Write unlimited articles','',''],
+      membership: 'free'
+    },
+    {
+      title: 'Pro',
+      price: '$5/month',
+      license: 'Helixly lifetime License',
+      features: ['Read + write articles','Design showcase profile','All Pro tools','Technical Support'],
+      membership: 'pro'
+    }
+  ])
 
   useEffect(() => {
     db.collection('posts').doc('articles').onSnapshot(snap => {
@@ -59,7 +75,7 @@ const StoreContextProvider = (props) => {
   return (
     <StoreContext.Provider value={{
       posts, setPosts, myuser, setMyUser, allUsers, setAllUsers, filters, setFilters, activeFilter, setActiveFilter, editData, setEditData,
-      editMode, setEditMode, commentsScroll, setCommentsScroll
+      editMode, setEditMode, commentsScroll, setCommentsScroll, pricePlans
     }}>
       {props.children}
     </StoreContext.Provider>

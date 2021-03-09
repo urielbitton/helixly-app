@@ -21,6 +21,7 @@ export default function NestedCommentItem(props) {
 
   function saveComment() {
     let commentObj = {
+      author: db.collection('users').doc(user.uid),
       id,
       authorid,
       favlist,

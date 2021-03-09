@@ -92,11 +92,11 @@
 .profileprof .skillscont .skillsbubble {
   border-radius: 40px;
   background: var(--pale);
-  color: #555;
+  color: var(--graytxt);
   font-size: 16px;
   padding: 5px 10px;
   transition: all 0.2s;
-  cursor: default;
+  cursor: default; 
 }
 .profileprof .skillscont .skillsbubble:hover {
   filter: brightness(95%)
