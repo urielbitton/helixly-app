@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import {AppInput, AppSwitch} from './AppInputs'
 import './styles/Navbar.css'
 import firebase from 'firebase'
+import {StoreContext} from './StoreContext'
 
 export default function Navbar() {
 
-  const user = firebase.auth().currentUser
+  const {myuser} = useContext(StoreContext)
   const [openProf, setOpenProf] = useState(false)
   const history = useHistory()
+  const user = firebase.auth().currentUser
 
   useEffect(() => {
     window.onclick = () => {
@@ -31,8 +33,8 @@ export default function Navbar() {
           </div> 
         </div>
         <div className="profcont" onClick={(e) => {e.stopPropagation();setOpenProf(prev => !prev)}} style={{background:openProf&&'#fff'}}>
-          <img src={user.photoURL} alt="" />
-          <h6>{user.displayName}</h6>
+          <img src={myuser.profimg} alt="" />
+          <h6>{myuser.fullname}</h6> 
           <i className="fas fa-th" style={{color:openProf&&'var(--color)'}}></i> 
         </div>
         <div className={openProf?'profslidecont profslidecont-open':'profslidecont'}>

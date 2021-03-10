@@ -20,7 +20,7 @@ export default function PricePlan(props) {
   function memberButton() {
     if(myuser.membership==='free') {
       if(membership==='pro') {
-        return <button onClick={() => setShowPayments(true)}><i></i>Buy Now<i className="far fa-shopping-bag"></i></button>
+        return <button onClick={() => setShowPayments(true)}><i></i>Get Pro<i className="far fa-shopping-bag"></i></button>
       }
       else {
         return <button className="nonprobtn" disabled><i></i>Already Active<i className="far fa-check"></i></button>

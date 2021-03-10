@@ -12,12 +12,14 @@ export default function ProfileDesigns(props) {
   const [pinterest, setPinterest] = useState([]) 
  
   useEffect(() => { 
+    dribbble_access_token&&
     axios({ 
       method: 'get',
       url: `https://api.dribbble.com/v2/user/shots?access_token=${dribbble_access_token}`,
     }).then((response) => {
       setDribbble(response.data) 
     })
+    pinterestUsername&&
     axios({ 
       method: 'get',
       url: `https://api.pinterest.com/v3/pidgets/users/${pinterestUsername}/pins/`,
@@ -49,7 +51,7 @@ export default function ProfileDesigns(props) {
             <DribbbleComp apiname="Dribbble" api={dribbble} userinfo={props.el} />
           </Route>
           <Route path={`/profile/${uid}/designs/pinterest`}>
-            <PinterestComp apiname="Pinterest" api={pinterest} userinfo={props.el} />
+          {pinterest.user&&<PinterestComp apiname="Pinterest" api={pinterest} userinfo={props.el} />}
           </Route>
           <Route path={`/profile/${uid}/designs/instagram`}>
             Coming Soon

@@ -34,7 +34,7 @@ export default function HomeSidebar() {
       <div className="greetdiv">
         <h4>Good {dayTime} {myuser.firstname}</h4> 
         <div>
-          <img src={user.photoURL} alt="" />
+          <img src={myuser.profimg} alt="" />
           <AppButton 
             icon="fas fa-user" 
             iconcolor="#555" 

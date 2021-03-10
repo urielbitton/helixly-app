@@ -34,6 +34,7 @@ export default function ProfileRightSidebar(props) {
   }
 
   useEffect(() => { 
+    githubUsername&&
     axios({ 
       method: 'get',
       url: `https://api.github.com/users/${githubUsername}/repos`,
