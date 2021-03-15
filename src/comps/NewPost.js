@@ -16,6 +16,7 @@ export default function NewPost(props) {
   const [content, setContent] = useState(editData.content)
   const [cover, setCover] = useState(editData.cover)
   const [minread, setMinread] = useState(editData.minread)
+  const [premiumPost, setPremiumPost] = useState(false)
   const history = useHistory()
   const user = firebase.auth().currentUser
 
@@ -34,7 +35,8 @@ export default function NewPost(props) {
         comments: [],
         minread: 3, 
         favlist: [],
-        saves: [] 
+        saves: [],
+        premium: premiumPost
       }
       db.collection('posts').doc('articles').update({
         allposts: firebase.firestore.FieldValue.arrayUnion(postsObj)
@@ -58,7 +60,8 @@ export default function NewPost(props) {
         comments: [], 
         minread: 5, 
         favlist: editData.favlist,
-        saves: editData.saves
+        saves: editData.saves,
+        premium: premiumPost
       })
       posts && posts
       .filter(x => x.id===editData.id)
@@ -111,9 +114,21 @@ export default function NewPost(props) {
           setMinread={setMinread}
         />
         <div className="postactions">
-          <button onClick={() => !editMode?publishPost():savePost()}>{!editMode?'Publish':'Save Post'}</button>
-          <button>Save Draft</button>
-          {editMode&&<button className="redbg" onClick={() => deletePost()}>Delete Post</button>}
+          <div>
+            <button onClick={() => !editMode?publishPost():savePost()}>{!editMode?'Publish':'Save Post'}</button>
+            <button>Save Draft</button>
+            {editMode&&<button className="redbg" onClick={() => deletePost()}>Delete Post</button>}
+          </div>
+          <div>
+            <AppButton 
+              title={premiumPost?'Premium':"All"} 
+              icon={premiumPost?"fal fa-lock":"fal fa-unlock"}
+              bg={premiumPost?'var(--color)':''}
+              onClick={() => setPremiumPost(prev => !prev)}
+              color={premiumPost?"#fff":''}
+              iconcolor={premiumPost?"#fff":''}
+            />
+          </div>
         </div>
       </div> 
       <div className="postguidescont hidescroll">

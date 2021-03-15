@@ -38,6 +38,8 @@
 }
 .posteditorcont .titleinput::placeholder {
   font-size: 45px;
+  color: var(--graytxt);
+  opacity: 0.3;
 }
 .posteditorcont .posttextcontent {
   line-height: 2;
@@ -50,6 +52,8 @@
 }
 .posteditorcont .posttextcontent::placeholder {
   font-size: 16px;
+  color: var(--graytxt);
+  opacity: 0.3;
 }
 .posteditorcont .tagsinput {
   display: flex;
@@ -71,6 +75,8 @@
 .posteditorcont .tagsinput input::placeholder {
   font-size: 15px;
   font-weight: 600;
+  color: var(--graytxt);
+  opacity: 0.3;
 }
 .uploadpiccover {
   display: none;

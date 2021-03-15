@@ -40,7 +40,7 @@
   justify-content: space-between;
   align-items: center;
   background: var(--pale);
-  padding: 20px 40px;
+  padding: 40px;
 }
 .paymentscont .left h3 {
   font-size: 30px;
@@ -66,10 +66,25 @@
   margin-top: 5px;
   margin-bottom: 30px;
 }
-.paymentscont .right img {
-  width: 380px;
+.paymentscont .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-gap: 20px;
 }
-.paypalcont {
+.paymentscont .right h4 {
+  color: var(--graytxt);
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.paymentscont .right h4:hover {
+  text-decoration: underline;
+}
+.paymentscont .right img {
+  width: 300px;
+}
+.paypalcontinner {
   width: 300px;
 }
 .paymentmessages {

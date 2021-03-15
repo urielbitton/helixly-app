@@ -23,7 +23,7 @@ export default function PostEditor(props) {
       } 
     }
     else {
-      alert('Image is too large (max. 4MB)')
+      alert('Image is too large (max. 3MB)')
     }
   } 
 

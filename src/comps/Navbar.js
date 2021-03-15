@@ -39,12 +39,12 @@ export default function Navbar() {
         </div>
         <div className={openProf?'profslidecont profslidecont-open':'profslidecont'}>
           <h6 onClick={(e) => e.stopPropagation()}>Account</h6>
-          <Link><i className="far fa-user"></i>My Account</Link>
+          <Link to={`/profile/${user.uid}`}><i className="far fa-user"></i>My Account</Link>
           <Link><i className="far fa-sliders-h"></i>Preferences</Link>
           <Link><i className="far fa-heart"></i>My Favorites</Link>
           <h6 onClick={(e) => e.stopPropagation()}>Actions</h6>
           <Link to="/upgrade"><i className="far fa-unlock-alt"></i>Upgrade to Pro</Link>
-          <a href=" " onClick={() => firebase.auth().signOut()}><i className="far fa-sign-out"></i>Log Out</a>
+          <Link to="/" onClick={() => firebase.auth().signOut()}><i className="far fa-sign-out"></i>Log Out</Link>
         </div>
       </div>
       </div>

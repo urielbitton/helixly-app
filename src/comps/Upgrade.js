@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { PayPalButton } from "react-paypal-button-v2"
+import { PayPalButton } from 'react-paypal-button-v2'
+import StripeCheckout from 'react-stripe-checkout'
 import { Link } from 'react-router-dom'
 import PricePlan from './PricePlan'
 import { StoreContext } from './StoreContext'
@@ -9,12 +10,14 @@ import {db} from './Fire'
  
 export default function Upgrade() {
 
-  const {pricePlans, myuser, setMyUser} = useContext(StoreContext)
+  const {pricePlans, myuser} = useContext(StoreContext)
   const [showPayments, setShowPayments] = useState(false)
   const [successPaid, setSuccessPaid] = useState(false)
   const [failPaid, setFailPaid] = useState(false)
+  const [payMode, setPayMode] = useState(0)
   let paysRef = useRef()
   const clientid = "ASTQpkv9Y3mQ5-YBd20q0jMb9-SJr_TvUl_nhXu5h3C7xl0wumYgdqpSYIL6Vd__56oB7Slag0n2HA_r"
+  const stripekey = 'pk_live_51ITJTrAn0vm3U8V17WgxK6P58VlGZ2FeSNy7ObpeuhKF4XDzohXQX5nV4EJYTxH3JGhYCgEpD9URy5OuGp6RWnEk00PoSBI941'
   const user = firebase.auth().currentUser
 
   const plansrow = pricePlans && pricePlans.map(el => {
@@ -45,6 +48,18 @@ export default function Upgrade() {
   
     })
   }
+  const onToken = (token) => {
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`We are in business, ${data.email}`)
+      })
+    }).catch(error => {
+      console.log('There was an error. '+error)
+    })
+  }
   
   useEffect(() => { 
     paysRef.current.scrollIntoView()
@@ -72,30 +87,47 @@ export default function Upgrade() {
       <div ref={paysRef} className="paymentscont" style={{display: showPayments?"flex":'none'}}>
         <i className="fal fa-times" onClick={() => setShowPayments(false)}></i>
         <div className="left">
-          <h3>Pay With PayPal</h3>
-          <h6>Our current payment options include only paypal for now.</h6>
-          <div className="paypalcont">
-            <PayPalButton
-              amount="0.01" 
-              onSuccess={(details, data) =>  {setSuccessPaid(true);SendProEmail(details)}}
-              onError={() => setFailPaid(true)}
-              options={{ clientId: clientid }}
+          <div className="paypalcont" style={{display: payMode===0?'block':'none'}}> 
+            <h3>Pay With PayPal</h3>
+            <h6>Pay with paypal for quick checkout without a credit card</h6>
+            <div className="paypalcontinner">
+              <PayPalButton
+                amount="0.01" 
+                onSuccess={(details, data) =>  {setSuccessPaid(true);SendProEmail(details)}}
+                onError={() => setFailPaid(true)}
+                options={{ clientId: clientid }}
+              />
+            </div>
+          </div>
+          <div className="stripecont" style={{display: payMode===1?'block':'none'}}>
+            <h3>Pay With Stripe</h3>
+            <h6>Pay directly with a credit or debit card</h6>
+            <StripeCheckout
+              token={onToken}
+              stripeKey={stripekey}
+              currency="USD"
+              amount={1}
+              email={myuser.email} 
             />
           </div>
-          <div className="paymentmessages"> 
+          <div className="paymentmessages" style={{display: (successPaid | failPaid)?"block":"none"}}> 
             <p style={{display: successPaid?'block':'none'}}>Payment successful! Thank you for purchasing a pro membership. 
               You will receive an email shortly with your receipt and details of your new account. 
               <br/>
               <Link to="/" className="linkable"><i className="fal fa-home"></i>Home</Link>
-              <Link to="/myaccount" className="linkable"><i className="fal fa-user"></i>My Account</Link>
+              <Link to={`/profile/${user.uid}`} className="linkable"><i className="fal fa-user"></i>My Account</Link>
             </p> 
             <p style={{display: failPaid?'block':'none', color:'var(--red)'}}>
               There was an error receving your payment. Please try again later.
             </p>
           </div>
         </div>
-        <div className="right">
-          <img src="https://i.imgur.com/yxD9lmS.png" alt="" />
+        <div className="right">   
+          {
+            payMode===0?<h4 onClick={() => setPayMode(1)}>Pay With Credit Card Instead</h4>:
+            <h4 onClick={() => setPayMode(0)}>Pay With PayPal</h4>
+          }
+          <img src="https://i.imgur.com/yxD9lmS.png?1" alt="" />
         </div>
       </div>
       <div className="spacer"></div>
