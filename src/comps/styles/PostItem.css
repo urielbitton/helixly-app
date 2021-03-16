@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  overflow: hidden;
 } 
 .postitemcont .covercont {
   width: 35%;
@@ -83,6 +84,52 @@
   margin-left: 20px;
   font-size: 18px;
   color: #777;
+}
+.postitemcont .premiumbadge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--pale);
+  color: #555;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 3px 10px;
+  cursor: default;
+  user-select: none;
+}
+.postitemcontnar {
+  height: auto;
+  background: none;
+  box-shadow: none;
+  border-bottom: 1px solid #eee;
+}
+.postitemcontnar .infocont {
+  width: 90%;
+}
+.postitemcontnar .infocont h3 {
+  font-size: 18px;
+}
+.postitemcontnar .infocont p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.postitemcontnar .elementscont {
+  margin-top: 7px;
+}
+.postitemcontnar .authorcont h6 {
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+}
+.postitemcontnar .authorcont h6 small {
+  margin-left: 10px;
+}
+.postitemcontnar .authorcont img {
+  display: none;
+}
+.postitemcontnar .covercont {
+  width: 80px;
+  height: 80px;
 }
 
 @media (max-width:780px) {

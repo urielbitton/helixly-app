@@ -43,7 +43,7 @@ export default function CommentItem(props) {
     db.collection('posts').doc('articles').update({
       allposts: posts
     })
-  }
+  }  
   function deleteComment() {
     let confirm = window.confirm('Are you sure you want to delete this comment?')
     if(confirm) {

@@ -10,15 +10,28 @@ import { StoreContext } from './StoreContext'
 import PostPage from './PostPage'
 import Profile from './Profile'
 import Upgrade from './Upgrade'
+import LockedContent from './LockedContent'
 
 export default function Homecont() {
 
-  const {posts, allUsers} = useContext(StoreContext)  
+  const {posts, allUsers, myuser} = useContext(StoreContext)  
   
   const postpage = posts && posts.map(el => {
-    return <Route path={`/posts/${el.id}`}>
-      <PostPage el={el} />
-    </Route>
+    if(el.premium && myuser.premium) {
+      return <Route path={`/posts/${el.id}`}>
+        <PostPage el={el} />
+      </Route>
+    }
+    else if(el.premium && !myuser.premium) {
+      return <Route path={`/posts/${el.id}`}>
+        <LockedContent />
+      </Route> 
+    }
+    else {
+      return <Route path={`/posts/${el.id}`}>
+        <PostPage el={el} />
+      </Route>
+    }
   }) 
   const profilepage = allUsers && allUsers.map(el => {
     return <Route path={`/profile/${el.userinfo.uid}`}>

@@ -45,7 +45,7 @@ const StoreContextProvider = (props) => {
       title: 'Basic',
       price: 'Free',
       license: 'None',
-      features: ['Read free articles','Write unlimited articles','',''],
+      features: ['Read free articles','Write unlimited articles','Basic Profile',''],
       membership: 'free'
     },
     {

@@ -69,6 +69,7 @@ export default function App() {
           lastname: name.split(' ')[1],
           fullname: name,
           membership: 'free', 
+          premium: false,
           email: user.email,
           phone: "",
           city: "",

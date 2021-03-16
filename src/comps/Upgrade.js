@@ -68,6 +68,7 @@ export default function Upgrade() {
   useEffect(() => {  
     if(successPaid) {
       myuser.membership = 'pro'
+      myuser.premium = true
       db.collection('users').doc(user.uid).update({
         userinfo: myuser   
       }) 

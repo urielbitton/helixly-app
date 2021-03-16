@@ -17,6 +17,7 @@ nav .navgroup {
 }
 nav .logo {
   cursor: pointer;
+  user-select: none;
 }
 nav .navgroup h4 {
   font-weight: 900;
@@ -51,6 +52,7 @@ nav .profcont {
   padding: 5px;
   border-radius: 40px;
   color: var(--graytxt);
+  user-select: none;
 }
 nav .profcont:hover {
   background: #fff;

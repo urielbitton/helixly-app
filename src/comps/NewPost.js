@@ -36,6 +36,7 @@ export default function NewPost(props) {
         minread: 3, 
         favlist: [],
         saves: [],
+        starred: [],
         premium: premiumPost
       }
       db.collection('posts').doc('articles').update({
@@ -61,6 +62,7 @@ export default function NewPost(props) {
         minread: 5, 
         favlist: editData.favlist,
         saves: editData.saves,
+        starred: editData.starred,
         premium: premiumPost
       })
       posts && posts

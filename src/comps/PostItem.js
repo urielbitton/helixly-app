@@ -10,7 +10,8 @@ import StampToDate from './StampToDate'
 export default function PostItem(props) {
 
   const {setCommentsScroll} = useContext(StoreContext)
-  const {id, title, cover, content, tags, category, author, authorid, datecreated, comments, favlist, saves} = props.el
+  const {id, title, cover, content, tags, category, author, authorid, datecreated, comments, favlist, saves, premium} = props.el
+  const {narrow=false} = props
   const [theUser, setTheUser] = useState([])
   const history = useHistory()  
 
@@ -27,14 +28,15 @@ export default function PostItem(props) {
     author.onSnapshot(snap => {
       setTheUser(snap.data().userinfo) 
     })
-  },[])
+  },[]) 
 
   return (
-    <div className="postitemcont">
+    <div className={!narrow?"postitemcont":"postitemcont postitemcontnar"}>
       <div className="covercont"> 
         <img src={cover} alt="" onClick={() => history.push(`/posts/${id}`)}/>
       </div>
       <div className="infocont">
+        {(premium&&!narrow)&&<div className="premiumbadge"><small>Premium</small></div>}
         <div className="headercont">
           <h3 onClick={() => history.push(`/posts/${id}`)}>{shortenMsgs(title,82)}</h3>
           <p>{shortenMsgs(content.slice(0,150),140)}</p>
