@@ -153,6 +153,10 @@ export default function Upgrade() {
           </div>
         </div>
       </div>
+      <div className="bannercont" style={{display: !myuser.premium?'flex':'none'}}>
+        <h2>Upgrade your membership now</h2>
+        <button onClick={() => !myuser.premium&&setShowPayments(true)}>Get Pro</button> 
+      </div>
       <div className="spacer"></div>
     </div>
   )

@@ -230,3 +230,21 @@
   color: #fff;
   filter: brightness(100%)
 }
+
+@media (max-width:1300px) {
+  .loginpage .imgcont {
+    display: none;
+  }
+  .loginpage .infocont {
+    width: 100%;
+  }
+  .loginpage .infocont {
+    overflow-y: scroll; 
+  }
+}
+@media (max-height: 820px) {
+  .loginwindow {
+    height: 100%;
+    width: 100%;
+  }
+}
