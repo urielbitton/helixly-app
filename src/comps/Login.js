@@ -7,13 +7,6 @@ export default function Login(props) {
 
   const {name, setName, email, setEmail, password, setPassword, handleLogin, handleSignup, hasAccount, setHasAccount, emailError, passwordError } = props
 
-  function signUpFunc() {
-    if(name && email && password)
-      return handleSignup
-    else 
-      return alert('Please fill in all fields')
-  }
-
   return (
     <div className="loginpage">
       <div className="loginwindow">
@@ -45,7 +38,7 @@ export default function Login(props) {
                 <Link to="forgotpass">Forgot Password</Link>
               </div>
             }
-            <div className="loginbtn" onClick={hasAccount?handleLogin:signUpFunc()}>
+            <div className="loginbtn" onClick={hasAccount?handleLogin:handleSignup}>
               <span></span>
               <h6>{hasAccount?"Log in":"Sign up"}</h6>
               <i className="fal fa-long-arrow-right"></i>
