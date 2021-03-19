@@ -73,7 +73,7 @@ export default function CommentItem(props) {
       <div className="right">  
         <div className="commentbody">
           <h5>
-            <Link to="">{theUser.firstname} {theUser.lastname}</Link>
+            <Link to={`/profile/${theUser.uid}`}>{theUser.fullname}</Link>
             <span>•</span>
             <span>{StampToDate(dateadded)}</span>
             <CommentsOpts editing={editing} setEditing={setEditing} editAccess={authorid===user.uid} deleteComment={deleteComment}/>

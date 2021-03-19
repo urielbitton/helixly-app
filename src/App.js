@@ -62,12 +62,10 @@ export default function App() {
         user.updateProfile({
           displayName: name,
           photoURL: 'https://i.imgur.com/1OKoctC.jpg'
-        }) 
+        })  
         const userinfo = {
           uid: user.uid,
-          firstname: name.split(' ')[0],
-          lastname: name.split(' ')[1],
-          fullname: name,
+          fullname: name?name:'Guest User',
           membership: 'free', 
           premium: false,
           email: user.email,

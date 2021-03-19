@@ -1,15 +1,13 @@
 .readinglistpage {
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: auto 300px;
   grid-gap: 30px;
 }
 .readinglistpage > h4 {
   grid-column: 1/-1;
 }
 .readinglistsidebar {
-  background: #fff;
-  box-shadow: var(--shadow);
-  border-radius: 5px;
+  padding: 30px;
 }
 .readinglistheader {
   width: 100%;

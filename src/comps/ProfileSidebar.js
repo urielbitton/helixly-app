@@ -7,7 +7,7 @@ import firebase from 'firebase'
 export default function ProfileSidebar(props) {
 
   const {posts} = useContext(StoreContext)
-  const {profimg, firstname, lastname, jobtitle, bio, followers, socials, uid, website} = props.el
+  const {profimg, fullname, jobtitle, bio, followers, socials, uid, website} = props.el
   const postsnum = posts.filter(x => x.authorid===uid).length 
   const user = firebase.auth().currentUser
  
@@ -22,7 +22,7 @@ export default function ProfileSidebar(props) {
     <div className="profilesidebar">
       <div className="profcont" style={{backgroundImage: `url(${profimg})`}}></div>
       <div className="proftitles">
-        <h4>{firstname} {lastname}</h4>
+        <h4>{fullname}</h4>
         <h6>{jobtitle}</h6>
       </div>
       <div className="statscont">

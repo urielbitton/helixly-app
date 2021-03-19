@@ -10,7 +10,7 @@ import LockedContent from './LockedContent'
 export default function ProfileContent(props) {
 
   const {myuser} = useContext(StoreContext)
-  const {profimg, firstname, lastname, jobtitle, bio, followers, socials, uid} = props.el
+  const {profimg, fullname, jobtitle, bio, followers, socials, uid} = props.el
 
   return ( 
     <div className="profilecontent">

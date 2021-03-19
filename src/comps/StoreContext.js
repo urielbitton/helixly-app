@@ -56,7 +56,7 @@ const StoreContextProvider = (props) => {
       membership: 'pro'
     }
   ])
-
+ 
   useEffect(() => {
     db.collection('posts').doc('articles').onSnapshot(snap => {
       setPosts(snap.data().allposts)  

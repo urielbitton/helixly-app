@@ -4,7 +4,7 @@ import './styles/DesignsComp.css'
 export default function DribbbleComp(props) {
 
   const {api, apiname} = props
-  const {firstname, lastname} = props.userinfo
+  const {fullname} = props.userinfo
 
   const apicards = api && api.map(el =>  {
     return <div className="designscard">
@@ -27,7 +27,7 @@ export default function DribbbleComp(props) {
   return (
     <div className="designscomp">
     <div className="designscomphead">
-      <h5>{apiname} Profile: <span>{firstname} {lastname}</span></h5>
+      <h5>{apiname} Profile: <span>{fullname}</span></h5>
       <h5>Shots: <span>{api.length}</span></h5>
     </div>
     <div className="designscompcontent">

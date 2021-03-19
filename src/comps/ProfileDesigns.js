@@ -7,7 +7,7 @@ import PinterestComp from './PinterestComp'
 
 export default function ProfileDesigns(props) {
 
-  const {uid, firstname, lastname, dribbble_access_token, pinterestUsername} = props.el
+  const {uid, fullname, dribbble_access_token, pinterestUsername} = props.el
   const [dribbble, setDribbble] = useState([])
   const [pinterest, setPinterest] = useState([]) 
  

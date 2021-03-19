@@ -24,9 +24,6 @@ export default function ReadingList() {
   return (
     <div className="readinglistpage">
       <h4>My Reading List</h4>
-      <div className="readinglistsidebar">
-
-      </div>
       <div className="readinglistcont">
         <div className="readinglistheader">
           <NavLink exact to="/readinglist/" activeClassName="activereadlink"><h6>Saved ({readinglistsaved.length})</h6><hr/></NavLink>
@@ -40,6 +37,9 @@ export default function ReadingList() {
             {readingliststarred}
           </Route>
         </Switch>
+      </div>
+      <div className="readinglistsidebar">
+        <h4>Filters</h4> 
       </div>
     </div>
   )

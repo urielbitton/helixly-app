@@ -38,7 +38,7 @@ export default function Login(props) {
                 <Link to="forgotpass">Forgot Password</Link>
               </div>
             }
-            <div className="loginbtn" onClick={hasAccount?handleLogin:handleSignup}>
+            <div className="loginbtn" onClick={hasAccount?handleLogin:(name.length&&email.length)?handleSignup:() => alert('Please fill in the required fields')}>
               <span></span>
               <h6>{hasAccount?"Log in":"Sign up"}</h6>
               <i className="fal fa-long-arrow-right"></i>

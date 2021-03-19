@@ -12,7 +12,7 @@ export default function ArticleContent(props) {
 
   const {setEditData, setEditMode, commentsScroll, setCommentsScroll} = useContext(StoreContext)
   const {title, cover, content, tags, authorid, datecreated, comments, minread, favlist, saves} = props.props
-  const {firstname, lastname, profimg} = props.theuser
+  const {fullname, profimg} = props.theuser
   const history = useHistory()
   let commentsRef = useRef(null)
   const user = firebase.auth().currentUser
@@ -35,7 +35,7 @@ export default function ArticleContent(props) {
         <h1>{title}</h1> 
         <div className="metadatacont">
           <img src={profimg} alt=""/>
-          <h6>{firstname} {lastname}</h6>
+          <h6>{fullname}</h6>
           <h6><span>{tags[0]}</span></h6>
           <h6><span>{StampToDate(datecreated)}</span></h6>
           <h6><span>{minread} min. read</span></h6>

@@ -32,7 +32,7 @@ export default function HomeSidebar() {
   return (
     <div className="homesidebar"> 
       <div className="greetdiv">
-        <h4>Good {dayTime} {myuser.firstname}</h4> 
+        <h4>Good {dayTime} {myuser.fullname.split(' ')[0]}</h4> 
         <div>
           <img src={myuser.profimg} alt="" />
           <AppButton 

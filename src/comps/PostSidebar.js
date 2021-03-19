@@ -9,7 +9,7 @@ import {db} from './Fire'
 export default function PostSidebar(props) {
 
   const {comments, favlist, saves, authorid} = props.props
-  const {firstname, lastname, profimg, bio, socials, website} = props.theuser
+  const {fullname, profimg, bio, socials, website} = props.theuser
   const history = useHistory()
   const user = firebase.auth().currentUser
 
@@ -36,7 +36,7 @@ export default function PostSidebar(props) {
         </div>
       </div> 
       <div className="postauthorcont">
-        <h6 className="authorcont" onClick={() => history.push(`/profile/${authorid}`)}><img src={profimg} alt=""/><span>{firstname} {lastname}</span></h6>
+        <h6 className="authorcont" onClick={() => history.push(`/profile/${authorid}`)}><img src={profimg} alt=""/><span>{fullname}</span></h6>
         <p>{bio}</p>
         <div className="authorbtns">
           <AppButton title="Follow" size={14} icon="far fa-plus" bg="#e6e6e6" />

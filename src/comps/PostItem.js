@@ -44,7 +44,7 @@ export default function PostItem(props) {
         <div className="elementscont">
           <div className="authorcont">
             <img src={theUser.profimg} alt=""/>  
-            <h6 onClick={() => history.push(`/profile/${authorid}`)}><span>{theUser.firstname} {theUser.lastname}</span><small>{StampToDate(datecreated)}</small></h6>
+            <h6 onClick={() => history.push(`/profile/${authorid}`)}><span>{theUser.fullname}</span><small>{StampToDate(datecreated)}</small></h6>
           </div>
           <div className="actionscont">
             <LikeBtn favlist={favlist} post={props.el} likeaction="post"/>

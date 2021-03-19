@@ -5,7 +5,7 @@ import PostItem from './PostItem'
 export default function ProfilePosts(props) {
 
   const {posts} = useContext(StoreContext)
-  const {firstname, lastname, uid} = props.el
+  const {fullname, uid} = props.el
 
   const postsrow = posts && posts
     .filter(x => x.authorid===uid)
@@ -15,7 +15,7 @@ export default function ProfilePosts(props) {
 
   return (
     <div className="profileposts">
-      <h3>Posts by {firstname} {lastname} ({postsrow.length})</h3>
+      <h3>Posts by {fullname} ({postsrow.length})</h3>
       {postsrow}
     </div> 
   )
