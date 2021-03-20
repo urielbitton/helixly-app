@@ -8,6 +8,8 @@ export default function ProfilePosts(props) {
   const {fullname, uid} = props.el
 
   const postsrow = posts && posts
+    .slice()
+    .reverse()
     .filter(x => x.authorid===uid)
     .map(el => {
       return <PostItem el={el} />
@@ -18,5 +20,5 @@ export default function ProfilePosts(props) {
       <h3>Posts by {fullname} ({postsrow.length})</h3>
       {postsrow}
     </div> 
-  )
+  ) 
 }

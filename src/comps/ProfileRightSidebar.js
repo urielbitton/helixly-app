@@ -41,7 +41,7 @@ export default function ProfileRightSidebar(props) {
     }).then((response) => {
       setRepos(response.data)
     }) 
-  },[])
+  },[githubUsername])
 
   return (
     <div className="profilerightbar">

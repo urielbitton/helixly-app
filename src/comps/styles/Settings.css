@@ -1,0 +1,30 @@
+.settingsheader {
+  width: 100%;
+  margin: 50px 0;
+  border-bottom: 2px solid #eee;
+  display: flex;
+  align-items: center;
+  grid-gap: 50px;
+}
+.settingsheader a {
+  font-size: 13px;
+  font-weight: 600;
+  color: #aaa;
+  padding-bottom: 15px;
+  transition: all 0.2s;
+}
+.settingsheader a hr {
+  width: 100%;
+  height: 2px;
+  background: var(--color);
+  position: absolute;
+  bottom: -2px;
+  opacity: 0;
+  transition: all 0.2s;
+}
+.settingsheader .activesettingslink {
+  color: var(--color);
+}
+.settingsheader .activesettingslink hr {
+  opacity: 1;
+}
