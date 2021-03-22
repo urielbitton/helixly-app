@@ -25,11 +25,11 @@ export default function Login(props) {
             </div>
             {
               !hasAccount&&
-              <AppInput placeholder="Your full name" onChange={(e) => setName(e.target.value)} value={name}/>
+              <AppInput placeholder="Your full name" onChange={(e) => setName(e.target.value)} />
             }
-            <AppInput placeholder="Your email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+            <AppInput placeholder="Your email" onChange={(e) => setEmail(e.target.value)} />
             {emailError}
-            <AppInput placeholder="Your password" type="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
+            <AppInput placeholder="Your password" type="password" onChange={(e) => setPassword(e.target.value)} />
             {passwordError}
             {
               hasAccount&&

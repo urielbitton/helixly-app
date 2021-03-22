@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import BottomNav from './BottomNav'
 import { db } from './Fire'
 import Homecont from './Homecont'
 import Navbar from './Navbar'
 import './styles/AppContainer.css'
 import LoaderScreen from './LoaderScreen'
+import { StoreContext } from './StoreContext'
 
 export default function AppContainer() {
 
-  const [allPosts, setAllPosts] = useState([])
+  const {myuser} = useContext(StoreContext)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     db.collection('posts').onSnapshot(snap => {
@@ -16,14 +18,15 @@ export default function AppContainer() {
       snap.forEach(el => {
         allposts.push(el.data())
       })
-      setAllPosts(allposts)
+      if(myuser)
+        setLoading(false)
     })
   },[])
 
   return (
     <div className="appcontainer">
       <Navbar />
-      { allPosts.length?<Homecont />:<LoaderScreen /> }
+      { loading?<LoaderScreen />:<Homecont /> }
       <BottomNav />
     </div>
   )

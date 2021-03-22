@@ -5,10 +5,13 @@
 
 @media (max-width:1400px) {
   .grid {
-    width: 100%;
+    width: 97%;
   }
   .homecont {
     padding: 30px 10px;
+  }
+  nav {
+    padding: 10px;
   }
 }
 @media (max-width:1080px) {

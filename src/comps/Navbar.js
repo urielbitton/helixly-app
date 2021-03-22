@@ -44,7 +44,7 @@ export default function Navbar() {
           <Link><i className="far fa-heart"></i>My Favorites</Link>
           <h6 onClick={(e) => e.stopPropagation()}>Actions</h6>
           <Link to="/upgrade"><i className="far fa-unlock-alt"></i>Upgrade to Pro</Link>
-          <Link to="/" onClick={() => firebase.auth().signOut()}><i className="far fa-sign-out"></i>Log Out</Link>
+          <a href=" " onClick={() => firebase.auth().signOut()}><i className="far fa-sign-out"></i>Log Out</a>
         </div>
       </div>
       </div>
